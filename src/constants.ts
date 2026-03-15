@@ -16,9 +16,10 @@ export interface Service {
 
 export const CLINIC_INFO = {
   name: 'Rossi Soares Beauty',
+  logo: '/logo.png',
   tagline: 'Naturalmente Única',
   description:
-    'Sinta o ápice dos tratamentos estéticos e bem-estar em nossa clínica moderna e serena. Somos especialistas em realçar sua beleza natural com tratamentos personalizados.',
+    'Descubra uma experiência de cuidado e bem-estar em um espaço pensado para você. Nosso propósito é valorizar a beleza natural com excelência, técnica e atenção genuína em cada atendimento com tratamentos personalizados.',
   experienceYears: '14',
   address: 'CLN 309 Bloco A Loja 113 - Asa Norte, Brasília - DF',
   phone: '(61) 99285-8523',

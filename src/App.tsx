@@ -5,7 +5,6 @@
 
 import React, { useState, useEffect } from 'react';
 import {
-  Flower2,
   ArrowRight,
   ShieldCheck,
   HeartHandshake,
@@ -84,7 +83,11 @@ const Navbar = ({
     >
       <div className="max-w-7xl mx-auto px-6 lg:px-12 flex items-center justify-between">
         <div className="flex items-center gap-3 cursor-pointer" onClick={() => onNavigate('home')}>
-          <Flower2 className="text-primary w-8 h-8" />
+          <img
+            src={CLINIC_INFO.logo}
+            alt="Logo"
+            className="w-10 h-10 rounded-full object-cover shadow-sm"
+          />
           <h2 className="text-xl font-bold tracking-tight text-slate-900">{CLINIC_INFO.name}</h2>
         </div>
 
@@ -196,7 +199,7 @@ const Hero = () => {
         >
           <div className="aspect-[4/5] lg:aspect-square w-full bg-primary/5 rounded-[2rem] overflow-hidden relative group shadow-2xl">
             <img
-              src="https://lh3.googleusercontent.com/aida-public/AB6AXuDpZjjMnsCgJXyA-3vCJmqSWzHSzR-6YJvqSlGtEEmQnl2PABglHfZyD8gdYfJxm9Vh66ZKVwTv9oR4l2ipkYO6ykH0I4x5cmHQlG3UqI7JTUq-saC3VSDiIcU5WGGZWmv5WJH6nPW7RoMq5WLCpDBE_n6Zsg5KU18mCqHBh8Ohy-RCoVlNguWEDkKQ__53SU_U61i2L8GmEqUPYOWNJuSuUQZ8gLM5iN8x3GVZnr1ezZl7bnvbJCoo-IKEgGsWqq8Su5YjOF36JyF_"
+              src="/recepcao2.jpg"
               alt="Interior of a luxury modern spa room"
               className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
               referrerPolicy="no-referrer"
@@ -294,8 +297,8 @@ const About = () => {
         <div className="relative">
           <div className="w-full aspect-square bg-primary/10 rounded-2xl overflow-hidden shadow-xl">
             <img
-              src="https://lh3.googleusercontent.com/aida-public/AB6AXuDkZ0AoZX4Ydatj7ez_uDPDmR8pWZIoJpNT4Ebi0KTzVZTyyA30xVKtFqbJRzbxbNGnTuXpByv9ugxhE2JyVpjgwHm4MVupg3mUCBJDTj1ttL1FF0fq5PUbxu9luFvtAX5aCERjUSUd5N-_WGu3HP8VzAa2UApkxDRy8LbS74BRDvHRlmvZ8RgScAMIWKn9oNXw_4qaSQ_D9oP7nwRzgS7RaniR9CUSlIfa32Zbdt5zM6tAi1_YAXtuGx2eyKcZKm4e-p4pUJxcoUyk"
-              alt="Elegant spa reception area"
+              src="/nos.jpg"
+              alt="Owners"
               className="w-full h-full object-cover"
               referrerPolicy="no-referrer"
             />
@@ -445,7 +448,11 @@ const Footer = () => {
         <div className="grid lg:grid-cols-4 gap-12 mb-16">
           <div className="col-span-1 lg:col-span-2 space-y-6">
             <div className="flex items-center gap-3">
-              <Flower2 className="text-primary w-8 h-8" />
+              <img
+                src={CLINIC_INFO.logo}
+                alt="Logo"
+                className="w-10 h-10 rounded-full object-cover shadow-sm"
+              />
               <h2 className="text-2xl font-bold tracking-tight text-slate-900">
                 {CLINIC_INFO.name}
               </h2>
