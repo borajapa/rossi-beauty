@@ -16,7 +16,7 @@ export interface Service {
 
 export const CLINIC_INFO = {
   name: 'Rossi Soares Beauty',
-  logo: '/logo.png',
+  logo: '/index/logo.png',
   tagline: 'Naturalmente Única',
   description:
     'Descubra uma experiência de cuidado e bem-estar em um espaço pensado para você. Nosso propósito é valorizar a beleza natural com excelência, técnica e atenção genuína em cada atendimento com tratamentos personalizados.',
@@ -345,6 +345,48 @@ export const TESTIMONIALS = [
     name: 'Ana M.',
     initials: 'AM',
     text: 'Profissional maravilhosa! Muito caprichosa, atenciosa e o ambiente é perfeito, super aconchegante e limpinho. O trabalho dela é impecável.',
+    rating: 5,
+  },
+  {
+    name: 'Jéssica S.',
+    initials: 'JS',
+    text: 'A experiência foi incrível! A Rossi tem uma mão super leve e me deixou muito confortável o tempo todo. Meu design de sobrancelha ficou exatamente como eu queria, bem natural e alinhado.',
+    rating: 5,
+  },
+  {
+    name: 'Letícia R.',
+    initials: 'LR',
+    text: 'Amo o trabalho da Rossi! Sou cliente assídua e cada vez me surpreendo mais com o cuidado e carinho. A limpeza de pele dela é a melhor que já fiz, deixa minha pele renovada e com um glow incrível.',
+    rating: 5,
+  },
+  {
+    name: 'Mariana C.',
+    initials: 'MC',
+    text: 'Gostaria de agradecer pelo atendimento maravilhoso. Fiz o Brow Lamination e amei o resultado, superou minhas expectativas! Sem falar no espaço que é uma delícia de relaxar.',
+    rating: 5,
+  },
+  {
+    name: 'Camila F.',
+    initials: 'CF',
+    text: 'Excelente! A Rossi é super atenciosa e explica tudo direitinho antes de começar o procedimento. Fiz a revitalização facial e minha pele ficou outra, maravilhosa! Muito obrigada pelo mimo.',
+    rating: 5,
+  },
+  {
+    name: 'Amanda B.',
+    initials: 'AB',
+    text: 'Eu estou apaixonada pelo meu Lash Lifting! A técnica da Rossi é incrível, os produtos são de ótima qualidade e duram muito. Já estou indicando para todas as minhas amigas!',
+    rating: 5,
+  },
+  {
+    name: 'Bruna K.',
+    initials: 'BK',
+    text: 'O atendimento é um diferencial! Desde a recepção até a hora de ir embora a gente se sente cuidada. A Rossi é um amor de pessoa e super profissional no que faz. Recomendo de olhos fechados.',
+    rating: 5,
+  },
+  {
+    name: 'Patrícia V.',
+    initials: 'PV',
+    text: 'Fiz a hidratação labial e fiquei chocada com o resultado, meus lábios ficaram super macios e com uma cor linda e natural. Adorei o cuidado que ela teve em todas as etapas!',
     rating: 5,
   },
 ];
