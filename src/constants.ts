@@ -41,8 +41,7 @@ export const SERVICES: Service[] = [
     shortDescription: 'Um design inovador que busca ressaltar o natural fugindo dos padrões.',
     fullDescription:
       'Um design inovador que busca ressaltar o natural fugindo dos padrões. Cada sobrancelha é única e avaliamos a sua estrutura para executar um trabalho de excelência.',
-    image:
-      'https://uploads-app.s3.amazonaws.com/uploads/inventory_products/salon_36199/large_thumb_20260130130124_1000210266.jpg',
+    image: '/servicos/Natutal Brows/natural-brows.jpg',
     benefits: [
       'Avaliação estrutural',
       'Design personalizado',
@@ -58,8 +57,7 @@ export const SERVICES: Service[] = [
     shortDescription: 'Design de sobrancelha com aplicação de henna para um esfumado perfeito.',
     fullDescription:
       'Design de sobrancelha com aplicação de henna que deixa um esfumado perfeito. Ideal para quem busca preenchimento de falhas e mais volume.',
-    image:
-      'https://uploads-app.s3.amazonaws.com/uploads/inventory_products/salon_36199/large_thumb_20260121231418_gabryela-albernaz-sobrancelhas-henna.jpg',
+    image: '/servicos/Natutal Brows/natural-brows-henna.jpg',
     benefits: ['Esfumado perfeito', 'Preenchimento de falhas', 'Longa duração', 'Design exclusivo'],
     duration: '45 min',
     price: 'R$ 150,00',
@@ -70,8 +68,7 @@ export const SERVICES: Service[] = [
     shortDescription: 'Design de sobrancelha masculino que traz leveza e suavidade ao olhar.',
     fullDescription:
       'Design de sobrancelha masculino que traz leveza e suavidade ao olhar, respeitando os traços masculinos de forma natural.',
-    image:
-      'https://uploads-app.s3.amazonaws.com/uploads/inventory_products/salon_36199/large_thumb_20260212130505_sobrancelha_masculina.jpg',
+    image: '/servicos/Natutal Brows/natural-brows-man.jpg',
     benefits: ['Leveza e suavidade', 'Aspecto natural', 'Limpeza do olhar', 'Realce masculino'],
     duration: '30 min',
     price: 'R$ 85,00',
@@ -82,8 +79,7 @@ export const SERVICES: Service[] = [
     shortDescription: 'Microagulhamento para desenvolvimento dos fios.',
     fullDescription:
       'Microagulhamento com serum hidratante e estimulante, focado no desenvolvimento e crescimento dos fios das sobrancelhas.',
-    image:
-      'https://uploads-app.s3.amazonaws.com/uploads/inventory_products/salon_36199/large_thumb_20260121230517_525462133_622974800726150_8684289071664901263_n.jpg',
+    image: '/servicos/Natutal Brows/grow-up.jpg',
     benefits: [
       'Estimula o crescimento',
       'Hidratação profunda',
@@ -99,8 +95,7 @@ export const SERVICES: Service[] = [
     shortDescription: 'Aplicação de tinta nas sobrancelhas para maior destaque.',
     fullDescription:
       'Aplicação de tinta específica para sobrancelhas. Promove coloração dos fios brancos ou claros, dando mais destaque e sensação de volume.',
-    image:
-      'https://uploads-app.s3.amazonaws.com/uploads/inventory_products/salon_36199/large_thumb_20260121232034_sobrancelha-henna-.jpg',
+    image: '/servicos/Natutal Brows/tintura-de-sobrancelha.jpg',
     benefits: [
       'Cobertura de fios brancos',
       'Destaque do olhar',
@@ -116,8 +111,7 @@ export const SERVICES: Service[] = [
     shortDescription: 'Coloração dos cílios para um efeito alongado.',
     fullDescription:
       'Pintar os cílios com coloração específica para a área dos olhos, realçando o olhar e dispensando o uso de rímel no dia a dia.',
-    image:
-      'https://uploads-app.s3.amazonaws.com/uploads/inventory_products/salon_36199/large_thumb_20260205105133_1000442545.jpg',
+    image: '/servicos/Natutal Brows/tintura-cilios.jpg',
     benefits: [
       'Efeito rímel prolongado',
       'Realce do olhar',
@@ -133,8 +127,7 @@ export const SERVICES: Service[] = [
     shortDescription: 'Tratamento que combina limpeza com dermaplaning.',
     fullDescription:
       'O Face Spa é um tratamento completo que combina limpeza profunda com dermaplaning, promovendo renovação e cuidado intensivo em uma única sessão. A associação das técnicas permite remover impurezas e desobstruir os poros.',
-    image:
-      'https://uploads-app.s3.amazonaws.com/uploads/inventory_products/salon_36199/large_thumb_20260121230820_2_Kit-para-limpeza-de-pele-potencialize-seus-resultados-com-uma-pele-bem-preparada-1.jpg',
+    image: '/servicos/Estetica facial/face-spa.jpg',
     benefits: [
       'Limpeza profunda',
       'Remoção de células mortas',
@@ -150,8 +143,7 @@ export const SERVICES: Service[] = [
     shortDescription: 'Controle da oleosidade e prevenção de acne.',
     fullDescription:
       'Tratamento completo para desobstrução dos poros e controle da oleosidade. Tem como principal objetivo remover impurezas acumuladas, prevenir acne e manter a saúde cutânea em dia.',
-    image:
-      'https://uploads-app.s3.amazonaws.com/uploads/inventory_products/salon_36199/large_thumb_20260121230931_95bb51711c02939ce0c954927a43b5920cf90d23-768x441.jpg',
+    image: '/servicos/Estetica facial/limpeza-de-pele.jpg',
     benefits: [
       'Controle da oleosidade',
       'Prevenção de acne',
@@ -167,8 +159,7 @@ export const SERVICES: Service[] = [
     shortDescription: 'Peeling físico para remover camadas de células mortas.',
     fullDescription:
       'Peeling físico que remove a camada de células mortas, promovendo renovação. Estimula elastina, colágeno, clareamento de manchas e suaviza poros.',
-    image:
-      'https://uploads-app.s3.amazonaws.com/uploads/inventory_products/salon_36199/large_thumb_20260121230757_Blog-Fotos-3-1.jpg',
+    image: '/servicos/Estetica facial/dermaplanig.jpg',
     benefits: [
       'Remoção de penugem facial',
       'Pele ultra macia',
@@ -184,8 +175,7 @@ export const SERVICES: Service[] = [
     shortDescription: 'Limpeza, renovação e hidratação da pele.',
     fullDescription:
       'Tratamento rápido e eficaz que promove a limpeza, renovação e hidratação da pele. Inclui higienização, esfoliação e hidratação profunda para um glow imediato.',
-    image:
-      'https://uploads-app.s3.amazonaws.com/uploads/inventory_products/salon_36199/large_thumb_20260121231830_revitalizacao-facial.jpg',
+    image: '/servicos/Estetica facial/revitalizacao-facial.jpg',
     benefits: [
       'Hidratação profunda',
       'Glow imediato',
@@ -201,8 +191,7 @@ export const SERVICES: Service[] = [
     shortDescription: 'Peeling ultrassônico para esfoliação delicada.',
     fullDescription:
       'Utiliza tecnologia ultrassônica para potencializar os resultados de renovação. O peeling ultrassônico promove esfoliação delicada, removendo células mortas de forma indolor.',
-    image:
-      'https://uploads-app.s3.amazonaws.com/uploads/inventory_products/salon_36199/large_thumb_20260121231733_IMAGENS_06.jpg',
+    image: '/servicos/Estetica facial/ultra-skin.jpg',
     benefits: [
       'Esfoliação não agressiva',
       'Limpeza indolor',
@@ -218,8 +207,7 @@ export const SERVICES: Service[] = [
     shortDescription: 'Combinação de dermaplaning, peeling ultrassônico e vacuoterapia.',
     fullDescription:
       'Combina dermaplaning, peeling ultrassônico e vacuoterapia, promovendo uma renovação profunda e potencializando a absorção de ativos hidratantes para um brilho aveludado.',
-    image:
-      'https://uploads-app.s3.amazonaws.com/uploads/inventory_products/salon_36199/large_thumb_20260221221426_images1.jpg',
+    image: '/servicos/Estetica facial/velvet-glow.jpg',
     benefits: [
       'Pele aveludada',
       'Potencialização de ativos',
@@ -235,8 +223,7 @@ export const SERVICES: Service[] = [
     shortDescription: 'Foco em firmeza e melhora do contorno facial.',
     fullDescription:
       'Protocolo focado em firmeza, estímulo de colágeno e melhora do contorno facial, associando tecnologia de eletroestimulador e vacuoterapia para um efeito lifting.',
-    image:
-      'https://uploads-app.s3.amazonaws.com/uploads/inventory_products/salon_36199/large_thumb_20260220204834_revitalift1.jpg',
+    image: '/servicos/Estetica facial/revitalift.webp',
     benefits: [
       'Efeito Lifting',
       'Melhora o contorno facial',
@@ -252,8 +239,7 @@ export const SERVICES: Service[] = [
     shortDescription: 'Peeling de Diamante para esfoliação controlada.',
     fullDescription:
       'Utiliza Peeling de Diamante para promover uma esfoliação controlada e eficaz, removendo células mortas e melhorando incrivelmente a textura da pele.',
-    image:
-      'https://uploads-app.s3.amazonaws.com/uploads/inventory_products/salon_36199/large_thumb_20260122003606_526584992_3730351207099389_8978752874073137719_n.jpg',
+    image: '/servicos/Estetica facial/dermo-glow.jpg',
     benefits: [
       'Esfoliação mecânica',
       'Textura uniforme',
@@ -269,8 +255,7 @@ export const SERVICES: Service[] = [
     shortDescription: 'Estimulação intensiva da produção de colágeno.',
     fullDescription:
       'Ativa os mecanismos naturais de regeneração da pele, estimulando a produção intensiva de colágeno e melhorando a firmeza, textura e luminosidade.',
-    image:
-      'https://uploads-app.s3.amazonaws.com/uploads/inventory_products/salon_36199/large_thumb_20260121231026_LaVUHI2nPEnDCyNankYkJC4B4Yj7SHLrc5FiWpaF.jpg',
+    image: '/servicos/Estetica facial/microagulhamento.jpg',
     benefits: [
       'Indução percutânea de colágeno',
       'Melhora cicatrizes de acne',
@@ -286,8 +271,7 @@ export const SERVICES: Service[] = [
     shortDescription: 'Revitalização e hidratação profunda para os lábios.',
     fullDescription:
       'Hidratação profunda com ácido hialurônico e blend de vitaminas. Revitaliza, hidrata e rejuvenesce os lábios, estimulando colágeno na região labial.',
-    image:
-      'https://uploads-app.s3.amazonaws.com/uploads/inventory_products/salon_36199/large_thumb_20260121232648_hidralips-microagulhamento-dermapen-labios-brasilia-sandra-martins.png',
+    image: '/servicos/Estetica facial/natural-pump.png',
     benefits: [
       'Lábios hidratados',
       'Redução de descamação labial',
@@ -303,8 +287,7 @@ export const SERVICES: Service[] = [
     shortDescription: 'Alinhamento dos fios da sobrancelha para maior volume.',
     fullDescription:
       'Técnica de alinhamento dos fios da sobrancelha, deixando as sobrancelhas muito mais volumosas, espessas e perfeitamente penteadas.',
-    image:
-      'https://uploads-app.s3.amazonaws.com/uploads/inventory_products/salon_36199/large_thumb_20260130130158_1000242313.jpg',
+    image: '/servicos/Lash e Brow/brow_lamination.jpg',
     benefits: [
       'Fios alinhados',
       'Visual moderno e volumoso',
@@ -320,8 +303,7 @@ export const SERVICES: Service[] = [
     shortDescription: 'Levantamento e curvatura dos fios naturais dos cílios.',
     fullDescription:
       'Técnica que levanta e curva os fios naturais dos cílios, deixando o olhar mais aberto. Durabilidade de até 2 meses sem necessidade de manutenção frequente.',
-    image:
-      'https://uploads-app.s3.amazonaws.com/uploads/inventory_products/salon_36199/large_thumb_20260121230340_524632329_1275075183650799_6022851935625825302_n.jpg',
+    image: '/servicos/Lash e Brow/lash_lifting.jpg',
     benefits: ['Curvatura ideal', 'Volume natural', 'Olhar marcante', 'Disensa curvex'],
     duration: '1h 15min',
     price: 'R$ 200,00',
