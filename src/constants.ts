@@ -27,6 +27,10 @@ export const CLINIC_INFO = {
     { days: 'Seg - Sex', hours: '08:00 - 18:00' },
     { days: 'Sábado/Domingo', hours: 'Fechado', isClosed: true },
   ],
+  googleReviewsUrl:
+    'https://www.google.com/search?q=rossi+soares&oq=rossi&gs_lcrp=EgZjaHJvbWUqDggAEEUYJxg7GIAEGIoFMg4IABBFGCcYOxiABBiKBTIKCAEQLhixAxiABDIHCAIQABiABDIGCAMQRRg9MgYIBBBFGD0yBggFEEUYPDIGCAYQRRg8MgYIBxAFGEDSAQgyODQ3ajBqN6gCCLACAfEFgLnf2F6dgz3xBYC539henYM9&sourceid=chrome&ie=UTF-8#lrd=0x935a39007c08d0ff:0xd909b0a1a0ae345b,1,,,,',
+  googleMapsEmbedUrl:
+    'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3839.8660877846574!2d-47.887961!3d-15.7581561!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x935a39007c08d0ff%3A0xd909b0a1a0ae345b!2sRossi%20Soares%20Beauty!5e0!3m2!1spt-BR!2sbr!4v1715694380123!5m2!1spt-BR!2sbr',
 };
 
 export const SERVICES: Service[] = [
@@ -85,19 +89,22 @@ export const SERVICES: Service[] = [
 
 export const TESTIMONIALS = [
   {
-    name: 'Sophia Martinez',
-    initials: 'SM',
-    text: 'A experiência mais profissional que já tive. Minha pele nunca esteve tão bem após apenas duas sessões de seus faciais personalizados.',
+    name: 'Thais P.',
+    initials: 'TP',
+    text: 'A Rossi é uma excelente profissional, muito atenciosa e detalhista. O espaço é lindo, super limpo e aconchegante. Fiz sobrancelha e limpeza de pele e amei os resultados! Super recomendo.',
+    rating: 5,
   },
   {
-    name: 'Julianne Williams',
-    initials: 'JW',
-    text: 'Técnicos especialistas e um ambiente lindo. Rossi e sua equipe realmente dedicam tempo para ouvir suas necessidades. Altamente recomendado!',
+    name: 'Carolina M.',
+    initials: 'CM',
+    text: 'Atendimento impecável desde a marcação até o dia do procedimento. Profissional super capacitada que explica tudo com detalhes e transmite muita confiança. Voltarei com certeza!',
+    rating: 5,
   },
   {
-    name: 'Emma Peters',
-    initials: 'EP',
-    text: "A clínica é deslumbrante e os resultados do Botox são muito naturais. Finalmente me sinto a melhor versão de mim mesma sem parecer 'artificial'.",
+    name: 'Ana M.',
+    initials: 'AM',
+    text: 'Profissional maravilhosa! Muito caprichosa, atenciosa e o ambiente é perfeito, super aconchegante e limpinho. O trabalho dela é impecável.',
+    rating: 5,
   },
 ];
 
@@ -108,4 +115,8 @@ export const handleWhatsAppClick = (serviceName?: string) => {
       : `Olá! Gostaria de saber mais sobre os serviços da Rossi Soares Beauty.`
   );
   window.open(`https://wa.me/${CLINIC_INFO.whatsapp}?text=${message}`, '_blank');
+};
+
+export const handleScheduleClick = () => {
+  window.open('https://rossisoares.belasis.app/scheduling', '_blank');
 };

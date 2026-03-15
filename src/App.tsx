@@ -15,15 +15,16 @@ import {
   Phone,
   Share2,
   Instagram,
+  Facebook,
   Menu,
   X,
   ArrowLeft,
   Clock,
   CheckCircle2,
-  MessageCircle,
 } from 'lucide-react';
+import { FaWhatsapp } from 'react-icons/fa';
 import { motion, AnimatePresence } from 'motion/react';
-import { CLINIC_INFO, SERVICES, TESTIMONIALS, Service, handleWhatsAppClick } from './constants';
+import { CLINIC_INFO, SERVICES, TESTIMONIALS, Service, handleWhatsAppClick, handleScheduleClick } from './constants';
 
 const Navbar = ({
   onNavigate,
@@ -70,13 +71,13 @@ const Navbar = ({
     <header
       className={`fixed top-0 z-50 w-full transition-all duration-300 ${
         isScrolled || currentPage !== 'home'
-          ? 'bg-white/80 backdrop-blur-md border-b border-[#bb768d]/10 py-4'
+          ? 'bg-white/80 backdrop-blur-md border-b border-primary/10 py-4'
           : 'bg-transparent py-6'
       }`}
     >
       <div className="max-w-7xl mx-auto px-6 lg:px-12 flex items-center justify-between">
         <div className="flex items-center gap-3 cursor-pointer" onClick={() => onNavigate('home')}>
-          <Flower2 className="text-[#bb768d] w-8 h-8" />
+          <Flower2 className="text-primary w-8 h-8" />
           <h2 className="text-xl font-bold tracking-tight text-slate-900">{CLINIC_INFO.name}</h2>
         </div>
 
@@ -85,7 +86,7 @@ const Navbar = ({
             <button
               key={link.id}
               onClick={() => handleLinkClick(link.id)}
-              className="text-sm font-semibold text-slate-700 hover:text-[#bb768d] transition-colors"
+              className="text-sm font-semibold text-slate-700 hover:text-primary transition-colors"
             >
               {link.name}
             </button>
@@ -94,8 +95,8 @@ const Navbar = ({
 
         <div className="flex items-center gap-4">
           <button
-            onClick={() => handleWhatsAppClick()}
-            className="hidden sm:block bg-[#bb768d] hover:bg-[#bb768d]/90 text-white px-6 py-2.5 rounded-full text-sm font-bold shadow-lg shadow-[#bb768d]/20 transition-all"
+            onClick={() => handleScheduleClick()}
+            className="hidden sm:block bg-primary hover:bg-primary/90 text-white px-6 py-2.5 rounded-full text-sm font-bold shadow-lg shadow-primary/20 transition-all"
           >
             Reserve Agora
           </button>
@@ -115,7 +116,7 @@ const Navbar = ({
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
-            className="absolute top-full left-0 w-full bg-white border-b border-[#bb768d]/10 p-6 md:hidden"
+            className="absolute top-full left-0 w-full bg-white border-b border-primary/10 p-6 md:hidden"
           >
             <nav className="flex flex-col gap-4">
               {navLinks.map((link) => (
@@ -128,8 +129,8 @@ const Navbar = ({
                 </button>
               ))}
               <button
-                onClick={() => handleWhatsAppClick()}
-                className="w-full bg-[#bb768d] text-white py-3 rounded-xl font-bold"
+                onClick={() => handleScheduleClick()}
+                className="w-full bg-primary text-white py-3 rounded-xl font-bold"
               >
                 Reserve Agora
               </button>
@@ -155,7 +156,7 @@ const Hero = () => {
           className="order-2 lg:order-1 flex flex-col gap-8"
         >
           <div className="space-y-4">
-            <h1 className="text-5xl lg:text-7xl font-extrabold leading-[1.1] tracking-tight text-[#bb768d]">
+            <h1 className="text-5xl lg:text-7xl font-extrabold leading-[1.1] tracking-tight text-primary">
               {CLINIC_INFO.tagline}
             </h1>
             <p className="text-lg text-slate-600 max-w-lg leading-relaxed">
@@ -164,8 +165,8 @@ const Hero = () => {
           </div>
           <div className="flex flex-wrap gap-4">
             <button
-              onClick={() => handleWhatsAppClick()}
-              className="bg-[#bb768d] text-white px-8 py-4 rounded-xl font-bold text-lg shadow-xl shadow-[#bb768d]/25 hover:translate-y-[-2px] transition-all"
+              onClick={() => handleScheduleClick()}
+              className="bg-primary text-white px-8 py-4 rounded-xl font-bold text-lg shadow-xl shadow-primary/25 hover:translate-y-[-2px] transition-all"
             >
               Agendar um Horário
             </button>
@@ -173,7 +174,7 @@ const Hero = () => {
               onClick={() =>
                 document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' })
               }
-              className="bg-[#bb768d]/10 text-[#bb768d] px-8 py-4 rounded-xl font-bold text-lg hover:bg-[#bb768d]/20 transition-all"
+              className="bg-primary/10 text-primary px-8 py-4 rounded-xl font-bold text-lg hover:bg-primary/20 transition-all"
             >
               Ver Serviços
             </button>
@@ -186,7 +187,7 @@ const Hero = () => {
           transition={{ duration: 0.8 }}
           className="order-1 lg:order-2"
         >
-          <div className="aspect-[4/5] lg:aspect-square w-full bg-[#bb768d]/5 rounded-[2rem] overflow-hidden relative group shadow-2xl">
+          <div className="aspect-[4/5] lg:aspect-square w-full bg-primary/5 rounded-[2rem] overflow-hidden relative group shadow-2xl">
             <img
               src="https://lh3.googleusercontent.com/aida-public/AB6AXuDpZjjMnsCgJXyA-3vCJmqSWzHSzR-6YJvqSlGtEEmQnl2PABglHfZyD8gdYfJxm9Vh66ZKVwTv9oR4l2ipkYO6ykH0I4x5cmHQlG3UqI7JTUq-saC3VSDiIcU5WGGZWmv5WJH6nPW7RoMq5WLCpDBE_n6Zsg5KU18mCqHBh8Ohy-RCoVlNguWEDkKQ__53SU_U61i2L8GmEqUPYOWNJuSuUQZ8gLM5iN8x3GVZnr1ezZl7bnvbJCoo-IKEgGsWqq8Su5YjOF36JyF_"
               alt="Interior of a luxury modern spa room"
@@ -203,11 +204,11 @@ const Hero = () => {
 
 const Services = ({ onServiceClick }: { onServiceClick: (service: Service) => void }) => {
   return (
-    <section id="services" className="bg-[#bb768d]/5 py-24 px-6 lg:px-12">
+    <section id="services" className="bg-primary/5 py-24 px-6 lg:px-12">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16 space-y-4">
           <h2 className="text-3xl lg:text-4xl font-bold text-slate-900">Nossos Serviços</h2>
-          <div className="h-1 w-20 bg-[#bb768d] mx-auto rounded-full"></div>
+          <div className="h-1 w-20 bg-primary mx-auto rounded-full"></div>
           <p className="text-slate-600 max-w-2xl mx-auto">
             Tratamentos selecionados para proporcionar resultados visíveis e uma experiência
             luxuosa.
@@ -219,7 +220,7 @@ const Services = ({ onServiceClick }: { onServiceClick: (service: Service) => vo
             <motion.div
               key={service.id}
               whileHover={{ y: -10 }}
-              className="bg-white p-4 rounded-2xl shadow-sm border border-[#bb768d]/5 hover:shadow-xl transition-all group"
+              className="bg-white p-4 rounded-2xl shadow-sm border border-primary/5 hover:shadow-xl transition-all group"
             >
               <div className="aspect-square rounded-xl overflow-hidden mb-6">
                 <img
@@ -235,7 +236,7 @@ const Services = ({ onServiceClick }: { onServiceClick: (service: Service) => vo
               </p>
               <button
                 onClick={() => onServiceClick(service)}
-                className="text-[#bb768d] text-sm font-bold flex items-center gap-1 group-hover:gap-2 transition-all"
+                className="text-primary text-sm font-bold flex items-center gap-1 group-hover:gap-2 transition-all"
               >
                 Saiba Mais <ArrowRight className="w-4 h-4" />
               </button>
@@ -252,7 +253,7 @@ const About = () => {
     <section id="about" className="py-24 px-6 lg:px-12 max-w-7xl mx-auto">
       <div className="grid lg:grid-cols-2 gap-16 items-center">
         <div className="relative">
-          <div className="w-full aspect-square bg-[#bb768d]/10 rounded-2xl overflow-hidden shadow-xl">
+          <div className="w-full aspect-square bg-primary/10 rounded-2xl overflow-hidden shadow-xl">
             <img
               src="https://lh3.googleusercontent.com/aida-public/AB6AXuDkZ0AoZX4Ydatj7ez_uDPDmR8pWZIoJpNT4Ebi0KTzVZTyyA30xVKtFqbJRzbxbNGnTuXpByv9ugxhE2JyVpjgwHm4MVupg3mUCBJDTj1ttL1FF0fq5PUbxu9luFvtAX5aCERjUSUd5N-_WGu3HP8VzAa2UApkxDRy8LbS74BRDvHRlmvZ8RgScAMIWKn9oNXw_4qaSQ_D9oP7nwRzgS7RaniR9CUSlIfa32Zbdt5zM6tAi1_YAXtuGx2eyKcZKm4e-p4pUJxcoUyk"
               alt="Elegant spa reception area"
@@ -263,9 +264,9 @@ const About = () => {
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
             whileInView={{ opacity: 1, scale: 1 }}
-            className="absolute -bottom-8 -right-8 bg-white p-8 rounded-2xl shadow-2xl border border-[#bb768d]/10 hidden md:block"
+            className="absolute -bottom-8 -right-8 bg-white p-8 rounded-2xl shadow-2xl border border-primary/10 hidden md:block"
           >
-            <p className="text-4xl font-black text-[#bb768d]">{CLINIC_INFO.experienceYears}</p>
+            <p className="text-4xl font-black text-primary">{CLINIC_INFO.experienceYears}</p>
             <p className="text-sm font-bold opacity-70 text-slate-900">
               {CLINIC_INFO.experienceYears} Anos de Experiência
             </p>
@@ -288,24 +289,24 @@ const About = () => {
 
           <div className="flex flex-wrap gap-8 pt-4">
             <div className="flex flex-col items-center gap-2">
-              <div className="w-12 h-12 rounded-full bg-[#bb768d]/10 flex items-center justify-center">
-                <ShieldCheck className="text-[#bb768d] w-6 h-6" />
+              <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
+                <ShieldCheck className="text-primary w-6 h-6" />
               </div>
               <span className="text-[10px] font-bold uppercase tracking-tight text-slate-900">
                 Segurança Primeiro
               </span>
             </div>
-            <div className="flex flex-col items-center gap-2 px-6 border-x border-[#bb768d]/20">
-              <div className="w-12 h-12 rounded-full bg-[#bb768d]/10 flex items-center justify-center">
-                <HeartHandshake className="text-[#bb768d] w-6 h-6" />
+            <div className="flex flex-col items-center gap-2 px-6 border-x border-primary/20">
+              <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
+                <HeartHandshake className="text-primary w-6 h-6" />
               </div>
               <span className="text-[10px] font-bold uppercase tracking-tight text-slate-900">
                 Atendimento Personalizado
               </span>
             </div>
             <div className="flex flex-col items-center gap-2">
-              <div className="w-12 h-12 rounded-full bg-[#bb768d]/10 flex items-center justify-center">
-                <FlaskConical className="text-[#bb768d] w-6 h-6" />
+              <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
+                <FlaskConical className="text-primary w-6 h-6" />
               </div>
               <span className="text-[10px] font-bold uppercase tracking-tight text-slate-900">
                 Tecnologia de Ponta
@@ -322,15 +323,40 @@ const Testimonials = () => {
   return (
     <section
       id="testimonials"
-      className="bg-[#bb768d] text-white py-24 px-6 lg:px-12 overflow-hidden relative"
+      className="bg-primary text-white py-24 px-6 lg:px-12 overflow-hidden relative"
     >
       <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full blur-3xl -mr-32 -mt-32"></div>
       <div className="absolute bottom-0 left-0 w-64 h-64 bg-white/5 rounded-full blur-3xl -ml-32 -mb-32"></div>
 
       <div className="max-w-7xl mx-auto relative z-10">
-        <h2 className="text-3xl lg:text-4xl font-bold text-center mb-16">
-          O Que Nossas Clientes Dizem
-        </h2>
+        <div className="text-center mb-16">
+          <h2 className="text-3xl lg:text-4xl font-bold mb-6">O Que Nossas Clientes Dizem</h2>
+          <a
+            href={CLINIC_INFO.googleReviewsUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-3 bg-white/10 hover:bg-white/20 backdrop-blur-md px-6 py-3 rounded-full transition-all border border-white/20"
+          >
+            <div className="flex bg-white p-1 rounded-full">
+              <img
+                src="https://www.gstatic.com/images/branding/product/1x/googleg_48dp.png"
+                alt="Google"
+                className="w-5 h-5"
+              />
+            </div>
+            <div className="flex flex-col items-start leading-tight">
+              <span className="text-sm font-semibold">Avaliações no Google</span>
+              <div className="flex items-center gap-1">
+                <span className="font-bold">5.0</span>
+                <div className="flex text-yellow-400">
+                  {[...Array(5)].map((_, i) => (
+                    <Star key={i} className="w-3 h-3 fill-current" />
+                  ))}
+                </div>
+              </div>
+            </div>
+          </a>
+        </div>
 
         <div className="grid md:grid-cols-3 gap-8">
           {TESTIMONIALS.map((review, index) => (
@@ -339,19 +365,26 @@ const Testimonials = () => {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.2 }}
-              className="bg-white/10 backdrop-blur-sm p-8 rounded-2xl border border-white/20"
+              className="bg-white/10 backdrop-blur-sm p-8 rounded-2xl border border-white/20 flex flex-col h-full"
             >
-              <div className="flex text-yellow-400 mb-4">
-                {[...Array(5)].map((_, i) => (
-                  <Star key={i} className="w-5 h-5 fill-current" />
-                ))}
+              <div className="flex justify-between items-start mb-4">
+                <div className="flex text-yellow-400">
+                  {[...Array(review.rating || 5)].map((_, i) => (
+                    <Star key={i} className="w-4 h-4 fill-current" />
+                  ))}
+                </div>
+                <img
+                  src="https://www.gstatic.com/images/branding/product/1x/googleg_48dp.png"
+                  alt="Google"
+                  className="w-4 h-4 opacity-50 grayscale"
+                />
               </div>
-              <p className="italic mb-6 text-white/90 leading-relaxed">"{review.text}"</p>
+              <p className="italic mb-6 text-white/90 leading-relaxed flex-grow">"{review.text}"</p>
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center font-bold text-sm">
+                <div className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center font-bold text-sm shrink-0">
                   {review.initials}
                 </div>
-                <p className="font-bold">{review.name}</p>
+                <p className="font-bold text-sm truncate">{review.name}</p>
               </div>
             </motion.div>
           ))}
@@ -363,15 +396,12 @@ const Testimonials = () => {
 
 const Footer = () => {
   return (
-    <footer
-      id="contact"
-      className="bg-white border-t border-[#bb768d]/10 pt-20 pb-10 px-6 lg:px-12"
-    >
+    <footer id="contact" className="bg-white border-t border-primary/10 pt-20 pb-10 px-6 lg:px-12">
       <div className="max-w-7xl mx-auto">
         <div className="grid lg:grid-cols-4 gap-12 mb-16">
           <div className="col-span-1 lg:col-span-2 space-y-6">
             <div className="flex items-center gap-3">
-              <Flower2 className="text-[#bb768d] w-8 h-8" />
+              <Flower2 className="text-primary w-8 h-8" />
               <h2 className="text-2xl font-bold tracking-tight text-slate-900">
                 {CLINIC_INFO.name}
               </h2>
@@ -381,15 +411,39 @@ const Footer = () => {
               cidade.
             </p>
             <div className="flex gap-4">
-              {[Share2, Instagram].map((Icon, i) => (
-                <a
-                  key={i}
-                  href="#"
-                  className="w-10 h-10 rounded-full bg-[#bb768d]/10 flex items-center justify-center text-[#bb768d] hover:bg-[#bb768d] hover:text-white transition-all"
-                >
-                  <Icon className="w-5 h-5" />
-                </a>
-              ))}
+              <a
+                href="https://www.instagram.com/rossi.soares_beauty/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-all"
+                aria-label="Instagram"
+              >
+                <Instagram className="w-5 h-5" />
+              </a>
+              <a
+                href="https://www.facebook.com/rossisoaresbeauty/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-all"
+                aria-label="Facebook"
+              >
+                <Facebook className="w-5 h-5" />
+              </a>
+              <button
+                onClick={() => {
+                  if (navigator.share) {
+                    navigator.share({
+                      title: CLINIC_INFO.name,
+                      text: CLINIC_INFO.tagline,
+                      url: window.location.href,
+                    });
+                  }
+                }}
+                className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-all"
+                aria-label="Compartilhar"
+              >
+                <Share2 className="w-5 h-5" />
+              </button>
             </div>
           </div>
 
@@ -399,11 +453,11 @@ const Footer = () => {
             </h4>
             <ul className="space-y-4 text-slate-600">
               <li className="flex items-start gap-3">
-                <MapPin className="text-[#bb768d] w-5 h-5 shrink-0" />
+                <MapPin className="text-primary w-5 h-5 shrink-0" />
                 <span>{CLINIC_INFO.address}</span>
               </li>
               <li className="flex items-center gap-3">
-                <Phone className="text-[#bb768d] w-5 h-5 shrink-0" />
+                <Phone className="text-primary w-5 h-5 shrink-0" />
                 <span>{CLINIC_INFO.phone}</span>
               </li>
             </ul>
@@ -417,29 +471,35 @@ const Footer = () => {
               {CLINIC_INFO.openingHours.map((item, i) => (
                 <li
                   key={i}
-                  className={`flex justify-between ${item.isClosed ? 'text-[#bb768d] font-bold' : ''}`}
+                  className={`flex justify-between ${item.isClosed ? 'text-primary font-bold' : ''}`}
                 >
                   <span>{item.days}</span> <span>{item.hours}</span>
                 </li>
               ))}
             </ul>
-            <div className="w-full h-24 rounded-lg bg-slate-100 relative overflow-hidden flex items-center justify-center">
-              <div className="absolute inset-0 opacity-20 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]"></div>
-              <div className="relative flex items-center gap-2 text-[#bb768d]">
-                <MapPin className="w-6 h-6" />
-                <span className="text-xs font-bold">Ver no Mapa</span>
-              </div>
+            <div className="w-full h-32 rounded-xl overflow-hidden shadow-inner border border-slate-100 flex-shrink-0 relative group">
+              <div className="absolute inset-0 bg-slate-900/5 group-hover:bg-transparent transition-all z-10 pointer-events-none"></div>
+              <iframe
+                src={CLINIC_INFO.googleMapsEmbedUrl}
+                width="100%"
+                height="100%"
+                style={{ border: 0 }}
+                allowFullScreen={false}
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                className="absolute inset-0 grayscale-[0.2] contrast-[1.1] group-hover:grayscale-0 transition-all duration-500 scale-105"
+              ></iframe>
             </div>
           </div>
         </div>
 
-        <div className="border-t border-[#bb768d]/10 pt-10 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-slate-500">
+        <div className="border-t border-primary/10 pt-10 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-slate-500">
           <p>© 2024 {CLINIC_INFO.name}. Todos os direitos reservados.</p>
           <div className="flex gap-8">
-            <a href="#" className="hover:text-[#bb768d]">
+            <a href="#" className="hover:text-primary">
               Política de Privacidade
             </a>
-            <a href="#" className="hover:text-[#bb768d]">
+            <a href="#" className="hover:text-primary">
               Termos de Serviço
             </a>
           </div>
@@ -463,7 +523,7 @@ const ServiceDetail = ({ service, onBack }: { service: Service; onBack: () => vo
     >
       <button
         onClick={onBack}
-        className="flex items-center gap-2 text-[#bb768d] font-bold mb-8 hover:gap-3 transition-all"
+        className="flex items-center gap-2 text-primary font-bold mb-8 hover:gap-3 transition-all"
       >
         <ArrowLeft className="w-5 h-5" /> Voltar para Início
       </button>
@@ -474,11 +534,11 @@ const ServiceDetail = ({ service, onBack }: { service: Service; onBack: () => vo
             <h1 className="text-4xl lg:text-5xl font-extrabold text-slate-900">{service.title}</h1>
             <div className="flex items-center gap-4 text-slate-500 font-semibold">
               <div className="flex items-center gap-1">
-                <Clock className="w-5 h-5 text-[#bb768d]" />
+                <Clock className="w-5 h-5 text-primary" />
                 {service.duration}
               </div>
               {service.price && (
-                <div className="text-[#bb768d] font-bold">A partir de {service.price}</div>
+                <div className="text-primary font-bold">A partir de {service.price}</div>
               )}
             </div>
           </div>
@@ -490,7 +550,7 @@ const ServiceDetail = ({ service, onBack }: { service: Service; onBack: () => vo
             <ul className="grid sm:grid-cols-2 gap-4">
               {service.benefits.map((benefit, i) => (
                 <li key={i} className="flex items-start gap-3 text-slate-600">
-                  <CheckCircle2 className="w-5 h-5 text-[#bb768d] shrink-0 mt-0.5" />
+                  <CheckCircle2 className="w-5 h-5 text-primary shrink-0 mt-0.5" />
                   <span>{benefit}</span>
                 </li>
               ))}
@@ -499,7 +559,7 @@ const ServiceDetail = ({ service, onBack }: { service: Service; onBack: () => vo
 
           <button
             onClick={() => handleWhatsAppClick(service.title)}
-            className="w-full sm:w-auto bg-[#bb768d] text-white px-10 py-4 rounded-xl font-bold text-lg shadow-xl shadow-[#bb768d]/25 hover:translate-y-[-2px] transition-all"
+            className="w-full sm:w-auto bg-primary text-white px-10 py-4 rounded-xl font-bold text-lg shadow-xl shadow-primary/25 hover:translate-y-[-2px] transition-all"
           >
             Agendar este Serviço
           </button>
@@ -514,8 +574,8 @@ const ServiceDetail = ({ service, onBack }: { service: Service; onBack: () => vo
               referrerPolicy="no-referrer"
             />
           </div>
-          <div className="absolute -bottom-6 -left-6 bg-white p-6 rounded-2xl shadow-xl border border-[#bb768d]/10 max-w-[200px]">
-            <p className="text-xs font-bold text-[#bb768d] uppercase mb-2">Dica da Especialista</p>
+          <div className="absolute -bottom-6 -left-6 bg-white p-6 rounded-2xl shadow-xl border border-primary/10 max-w-[200px]">
+            <p className="text-xs font-bold text-primary uppercase mb-2">Dica da Especialista</p>
             <p className="text-sm text-slate-600 italic">
               "Resultados visíveis desde a primeira sessão."
             </p>
@@ -541,7 +601,7 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-[#f7f6f7] font-sans selection:bg-[#bb768d]/30">
+    <div className="min-h-screen bg-background font-sans selection:bg-primary/30">
       <Navbar onNavigate={setCurrentPage} currentPage={currentPage} />
       <main>
         <AnimatePresence mode="wait">
@@ -573,7 +633,7 @@ export default function App() {
         onClick={() => handleWhatsAppClick()}
         className="fixed bottom-8 right-8 z-50 bg-[#25D366] text-white p-4 rounded-full shadow-2xl flex items-center justify-center hover:bg-[#128C7E] transition-colors"
       >
-        <MessageCircle className="w-6 h-6 fill-current" />
+        <FaWhatsapp />
       </motion.button>
     </div>
   );
