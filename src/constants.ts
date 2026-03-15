@@ -308,6 +308,76 @@ export const SERVICES: Service[] = [
     duration: '1h 15min',
     price: 'R$ 200,00',
   },
+  {
+    id: 'epilacao-buco',
+    title: 'Epilação de Buço',
+    shortDescription: 'Epilação de buço com cera ou linha.',
+    fullDescription:
+      'Epilação de buço com cera ou linha, técnica eficiente para remoção de pelos faciais com resultados duradouros.',
+    image: '/servicos/Depilacao/epilacao-buco.avif',
+    benefits: [
+      'Pele lisa e macia',
+      'Remoção desde a raiz',
+      'Maior durabilidade',
+      'Rápido e prático',
+    ],
+    duration: '15 min',
+    price: 'R$ 35,00',
+  },
+  {
+    id: 'epilacao-barba',
+    title: 'Epilação de Barba',
+    shortDescription: 'Epilação da barba com cera.',
+    fullDescription:
+      'Epilação da barba com cera, ideal para quem busca maior durabilidade e um contorno limpo e bem definido para a barba.',
+    image: '/servicos/Depilacao/epilacao_de_barba.jpg',
+    benefits: ['Maior durabilidade', 'Pele mais macia', 'Contorno definido', 'Reduz crescimento'],
+    duration: '30 min',
+    price: 'R$ 70,00',
+  },
+  {
+    id: 'epilacao-facial',
+    title: 'Epilação Facial',
+    shortDescription: 'Epilação Facial com linha.',
+    fullDescription:
+      'Epilação Facial completa utilizando a técnica com linha (threading), que remove os pelos desde a raiz de forma delicada e sem agredir a pele.',
+    image: '/servicos/Depilacao/depilacao_facial.png',
+    benefits: ['Não agride a pele', 'Remove pelos finos', 'Não mancha', 'Estimula a circulação'],
+    duration: '45 min',
+    price: 'R$ 100,00',
+  },
+  {
+    id: 'massagem',
+    title: 'Massagem',
+    shortDescription: 'Diversos tipos de massagens focadas no seu bem-estar.',
+    fullDescription:
+      'Escolha a melhor massagem para o seu momento: Relaxante (renova energias), Drenagem (alivia inchaços), Modeladora (foco no contorno corporal), Bambuterapia (relaxamento e modelagem), Liberação Miofascial (pontos de dor) ou Candle Massage (hidratação intensa com velas).',
+    image: '/servicos/Massagem/massagem_relaxante.jpg',
+    benefits: [
+      'Relaxamento profundo',
+      'Alívio de dores',
+      'Melhora da circulação',
+      'Renovação de energias',
+    ],
+    duration: '1h 15min',
+    price: 'R$ 120,00',
+  },
+  {
+    id: 'avaliacao',
+    title: 'Avaliação',
+    shortDescription: 'Conversa esclarecedora e indicação do melhor plano de tratamento.',
+    fullDescription:
+      'Agende uma avaliação caso esteja com dúvida sobre algum procedimento. Tenha uma conversa esclarecedora com a profissional que irá orientá-la com o melhor plano de tratamento. O valor pago será abatido caso haja o agendamento do procedimento.',
+    image: '/servicos/Avaliação/avaliacao.jpg',
+    benefits: [
+      'Tira-dúvidas',
+      'Plano personalizado',
+      'Orientação profissional',
+      'Valor abatido no agendamento',
+    ],
+    duration: '15 min',
+    price: 'R$ 50,00',
+  },
 ];
 
 export const TESTIMONIALS = [
