@@ -199,7 +199,7 @@ const Hero = () => {
         >
           <div className="aspect-[4/5] lg:aspect-square w-full bg-primary/5 rounded-[2rem] overflow-hidden relative group shadow-2xl">
             <img
-              src="/recepcao2.jpg"
+              src="/recepcao.jpg"
               alt="Interior of a luxury modern spa room"
               className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
               referrerPolicy="no-referrer"
@@ -457,10 +457,6 @@ const Footer = () => {
                 {CLINIC_INFO.name}
               </h2>
             </div>
-            <p className="max-w-sm text-slate-600">
-              Seu destino para tratamentos estéticos de luxo e bem-estar holístico no coração da
-              cidade.
-            </p>
             <div className="flex gap-4">
               <a
                 href="https://www.instagram.com/rossi.soares_beauty/"
@@ -545,7 +541,7 @@ const Footer = () => {
         </div>
 
         <div className="border-t border-primary/10 pt-10 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-slate-500">
-          <p>© 2024 {CLINIC_INFO.name}. Todos os direitos reservados.</p>
+          <p>© 2026 {CLINIC_INFO.name}. Todos os direitos reservados.</p>
           <div className="flex gap-8">
             <a href="#" className="hover:text-primary">
               Política de Privacidade
