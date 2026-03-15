@@ -24,7 +24,14 @@ import {
 } from 'lucide-react';
 import { FaWhatsapp } from 'react-icons/fa';
 import { motion, AnimatePresence } from 'motion/react';
-import { CLINIC_INFO, SERVICES, TESTIMONIALS, Service, handleWhatsAppClick, handleScheduleClick } from './constants';
+import {
+  CLINIC_INFO,
+  SERVICES,
+  TESTIMONIALS,
+  Service,
+  handleWhatsAppClick,
+  handleScheduleClick,
+} from './constants';
 
 const Navbar = ({
   onNavigate,
@@ -202,27 +209,62 @@ const Hero = () => {
   );
 };
 
+import { useRef } from 'react';
+
 const Services = ({ onServiceClick }: { onServiceClick: (service: Service) => void }) => {
+  const scrollRef = useRef<HTMLDivElement>(null);
+
+  const scroll = (direction: 'left' | 'right') => {
+    if (scrollRef.current) {
+      const { current } = scrollRef;
+      const scrollAmount = direction === 'left' ? -current.offsetWidth : current.offsetWidth;
+      current.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+    }
+  };
+
   return (
-    <section id="services" className="bg-primary/5 py-24 px-6 lg:px-12">
-      <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-16 space-y-4">
-          <h2 className="text-3xl lg:text-4xl font-bold text-slate-900">Nossos Serviços</h2>
-          <div className="h-1 w-20 bg-primary mx-auto rounded-full"></div>
-          <p className="text-slate-600 max-w-2xl mx-auto">
-            Tratamentos selecionados para proporcionar resultados visíveis e uma experiência
-            luxuosa.
-          </p>
+    <section id="services" className="bg-primary/5 py-24 px-6 lg:px-12 overflow-hidden">
+      <div className="max-w-7xl mx-auto relative">
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+          <div className="space-y-4">
+            <h2 className="text-3xl lg:text-4xl font-bold text-slate-900">Nossos Serviços</h2>
+            <div className="h-1 w-20 bg-primary rounded-full"></div>
+            <p className="text-slate-600 max-w-2xl">
+              Tratamentos selecionados para proporcionar resultados visíveis e uma experiência
+              luxuosa.
+            </p>
+          </div>
+
+          <div className="flex gap-4 hidden sm:flex">
+            <button
+              onClick={() => scroll('left')}
+              className="w-14 h-14 rounded-full bg-white border border-primary/20 flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-all shadow-xl hover:shadow-2xl hover:-translate-y-1 active:translate-y-0"
+              aria-label="Anterior"
+            >
+              <ArrowLeft className="w-6 h-6" />
+            </button>
+            <button
+              onClick={() => scroll('right')}
+              className="w-14 h-14 rounded-full bg-white border border-primary/20 flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-all shadow-xl hover:shadow-2xl hover:-translate-y-1 active:translate-y-0"
+              aria-label="Próximo"
+            >
+              <ArrowRight className="w-6 h-6" />
+            </button>
+          </div>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-8">
+        <div
+          ref={scrollRef}
+          className="flex overflow-x-auto gap-8 pb-8 snap-x snap-mandatory hide-scrollbar -mx-6 px-6 lg:-mx-12 lg:px-12 md:mx-0 md:px-0"
+        >
           {SERVICES.map((service) => (
             <motion.div
               key={service.id}
+              onClick={() => onServiceClick(service)}
               whileHover={{ y: -10 }}
-              className="bg-white p-4 rounded-2xl shadow-sm border border-primary/5 hover:shadow-xl transition-all group"
+              className="bg-white p-4 rounded-2xl shadow-sm border border-primary/5 hover:shadow-xl transition-all cursor-pointer group min-w-[280px] sm:min-w-[320px] max-w-[320px] shrink-0 snap-start flex flex-col items-start"
             >
-              <div className="aspect-square rounded-xl overflow-hidden mb-6">
+              <div className="aspect-square w-full rounded-xl overflow-hidden mb-6">
                 <img
                   src={service.image}
                   alt={service.title}
@@ -231,15 +273,12 @@ const Services = ({ onServiceClick }: { onServiceClick: (service: Service) => vo
                 />
               </div>
               <h3 className="text-xl font-bold mb-2 text-slate-900">{service.title}</h3>
-              <p className="text-slate-600 text-sm leading-relaxed mb-4">
+              <p className="text-slate-600 text-sm leading-relaxed mb-4 flex-grow">
                 {service.shortDescription}
               </p>
-              <button
-                onClick={() => onServiceClick(service)}
-                className="text-primary text-sm font-bold flex items-center gap-1 group-hover:gap-2 transition-all"
-              >
+              <div className="text-primary text-sm font-bold flex items-center gap-1 group-hover:gap-2 transition-all mt-auto">
                 Saiba Mais <ArrowRight className="w-4 h-4" />
-              </button>
+              </div>
             </motion.div>
           ))}
         </div>
@@ -275,16 +314,21 @@ const About = () => {
 
         <div className="space-y-6">
           <h2 className="text-3xl lg:text-4xl font-bold text-slate-900">Nossa Filosofia</h2>
-          <p className="text-lg leading-relaxed text-slate-700">
-            Na {CLINIC_INFO.name}, acreditamos que a beleza não se resume a aparências — trata-se de
-            confiança e bem-estar. Nossa clínica é fundada no princípio de "Realce em vez de
-            Alteração".
+          <p className="text-lg leading-relaxed text-slate-700 text-justify">
+            Na {CLINIC_INFO.name}, acreditamos que o verdadeiro cuidado nasce da união entre
+            excelência técnica e respeito. Há mais de uma década, construímos nossa trajetória com
+            base na competência, padronização, pontualidade e rigorosos protocolos de higiene,
+            sempre priorizando a segurança e o bem-estar de clientes e colaboradores.
           </p>
-          <p className="text-lg leading-relaxed text-slate-700">
-            Utilizamos a mais recente tecnologia de grau médico e produtos de classe mundial para
-            garantir que cada cliente receba uma experiência personalizada que respeite suas
-            características únicas. Nosso objetivo é proporcionar um santuário onde a ciência
-            encontra o luxo.
+          <p className="text-lg leading-relaxed text-slate-700 text-justify">
+            Nosso princípio é simples: dar sempre mais do que recebemos. Por isso, cada atendimento
+            é guiado pela cordialidade, elegância e atenção aos detalhes. Recebemos cada um com
+            respeito e acolhimento, mantendo sempre o padrão de cuidado.
+          </p>
+          <p className="text-lg leading-relaxed text-slate-700 text-justify">
+            Mais do que prestar serviços, buscamos oferecer uma experiência em que cada cliente se
+            sinta bem recebido, em um espaço onde o profissionalismo e a hospitalidade caminham
+            juntos.
           </p>
 
           <div className="flex flex-wrap gap-8 pt-4">
@@ -558,7 +602,7 @@ const ServiceDetail = ({ service, onBack }: { service: Service; onBack: () => vo
           </div>
 
           <button
-            onClick={() => handleWhatsAppClick(service.title)}
+            onClick={() => handleScheduleClick()}
             className="w-full sm:w-auto bg-primary text-white px-10 py-4 rounded-xl font-bold text-lg shadow-xl shadow-primary/25 hover:translate-y-[-2px] transition-all"
           >
             Agendar este Serviço
