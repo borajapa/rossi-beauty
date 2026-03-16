@@ -26,6 +26,7 @@ import { motion, AnimatePresence } from 'motion/react';
 import {
   CLINIC_INFO,
   SERVICES,
+  SERVICE_CATEGORIES,
   TESTIMONIALS,
   Service,
   handleWhatsAppClick,
@@ -106,7 +107,7 @@ const Navbar = ({
         <div className="flex items-center gap-4">
           <button
             onClick={() => handleScheduleClick()}
-            className="hidden sm:block bg-primary hover:bg-primary/90 text-white px-6 py-2.5 rounded-full text-sm font-bold shadow-lg shadow-primary/20 transition-all"
+            className="hidden sm:block bg-primary hover:translate-y-[-2px] text-white px-6 py-2.5 rounded-xl text-sm font-bold shadow-xl shadow-primary/25 transition-all"
           >
             Reserve Agora
           </button>
@@ -140,7 +141,7 @@ const Navbar = ({
               ))}
               <button
                 onClick={() => handleScheduleClick()}
-                className="w-full bg-primary text-white py-3 rounded-xl font-bold"
+                className="w-full bg-primary text-white py-4 rounded-xl font-bold text-lg shadow-xl shadow-primary/25 hover:translate-y-[-2px] transition-all"
               >
                 Reserve Agora
               </button>
@@ -214,7 +215,13 @@ const Hero = () => {
 
 import { useRef } from 'react';
 
-const Services = ({ onServiceClick }: { onServiceClick: (service: Service) => void }) => {
+const Services = ({
+  onServiceClick,
+  onViewAll,
+}: {
+  onServiceClick: (service: Service) => void;
+  onViewAll: () => void;
+}) => {
   const scrollRef = useRef<HTMLDivElement>(null);
 
   const scroll = (direction: 'left' | 'right') => {
@@ -258,7 +265,7 @@ const Services = ({ onServiceClick }: { onServiceClick: (service: Service) => vo
 
         <div
           ref={scrollRef}
-          className="flex overflow-x-auto gap-8 pb-8 snap-x snap-mandatory hide-scrollbar -mx-6 px-6 lg:-mx-12 lg:px-12 md:mx-0 md:px-0"
+          className="flex overflow-x-auto gap-8 pb-8 snap-x snap-mandatory hide-scrollbar -mx-6 px-6 md:mx-0 md:px-0"
         >
           {SERVICES.map((service) => (
             <motion.div
@@ -285,11 +292,20 @@ const Services = ({ onServiceClick }: { onServiceClick: (service: Service) => vo
             </motion.div>
           ))}
         </div>
+
+        {/* Ver todos button */}
+        <div className="flex justify-center mt-8">
+          <button
+            onClick={onViewAll}
+            className="inline-flex items-center gap-2 bg-primary text-white px-8 py-4 rounded-xl font-bold text-lg shadow-xl shadow-primary/25 hover:translate-y-[-2px] transition-all"
+          >
+            Ver todos os serviços <ArrowRight className="w-4 h-4" />
+          </button>
+        </div>
       </div>
     </section>
   );
 };
-
 const About = () => {
   return (
     <section id="about" className="py-24 px-6 lg:px-12 max-w-7xl mx-auto">
@@ -380,7 +396,7 @@ const Testimonials = () => {
   return (
     <section
       id="testimonials"
-      className="bg-primary text-white py-24 px-6 lg:px-12 overflow-hidden relative"
+      className="bg-primary text-white py-24 px-6 lg:px-12 overflow-x-clip relative"
     >
       <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full blur-3xl -mr-32 -mt-32"></div>
       <div className="absolute bottom-0 left-0 w-64 h-64 bg-white/5 rounded-full blur-3xl -ml-32 -mb-32"></div>
@@ -439,7 +455,7 @@ const Testimonials = () => {
         <div className="relative">
           <div
             ref={scrollRef}
-            className="flex overflow-x-auto gap-8 pb-8 snap-x snap-mandatory hide-scrollbar -mx-6 px-6 md:mx-0 md:px-0"
+            className="flex overflow-x-auto gap-0 sm:gap-8 pb-8 snap-x snap-mandatory hide-scrollbar -mx-6 px-0 sm:px-6 md:mx-0 md:px-0"
           >
             {TESTIMONIALS.map((review, index) => (
               <motion.div
@@ -448,7 +464,7 @@ const Testimonials = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
-                className="bg-white/10 backdrop-blur-sm p-8 rounded-2xl border border-white/20 flex flex-col h-full min-w-[280px] sm:min-w-[320px] md:min-w-[calc((100%-4rem)/3)] md:max-w-[calc((100%-4rem)/3)] shrink-0 snap-start"
+                className="bg-white/10 backdrop-blur-sm p-8 rounded-2xl border border-white/20 flex flex-col h-full w-full shrink-0 sm:w-auto sm:min-w-[320px] md:min-w-[calc((100%-4rem)/3)] md:max-w-[calc((100%-4rem)/3)] snap-start"
               >
                 <div className="flex justify-between items-start mb-4">
                   <div className="flex text-yellow-400">
@@ -595,7 +611,100 @@ const Footer = () => {
   );
 };
 
-const ServiceDetail = ({ service, onBack }: { service: Service; onBack: () => void }) => {
+const AllServicesPage = ({
+  onServiceClick,
+  onBack,
+}: {
+  onServiceClick: (service: Service) => void;
+  onBack: () => void;
+}) => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  const categoriesWithServices = SERVICE_CATEGORIES.filter((cat) =>
+    SERVICES.some((s) => s.category === cat)
+  );
+
+  return (
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      className="pt-32 pb-24 px-6 lg:px-12 max-w-7xl mx-auto"
+    >
+      <button
+        onClick={onBack}
+        className="flex items-center gap-2 text-primary font-bold mb-10 hover:gap-3 transition-all"
+      >
+        <ArrowLeft className="w-5 h-5" /> Voltar para Início
+      </button>
+
+      <div className="mb-12 space-y-3">
+        <h1 className="text-4xl lg:text-5xl font-extrabold text-slate-900">Todos os Serviços</h1>
+        <div className="h-1 w-20 bg-primary rounded-full" />
+        <p className="text-slate-600 max-w-2xl">
+          Explore nossa lista completa de tratamentos, organizados por categoria.
+        </p>
+      </div>
+
+      <div className="space-y-16">
+        {categoriesWithServices.map((category) => {
+          const categoryServices = SERVICES.filter((s) => s.category === category);
+          return (
+            <section key={category}>
+              <div className="flex items-center gap-4 mb-8">
+                <h2 className="text-2xl font-bold text-slate-900">{category}</h2>
+                <div className="flex-1 h-px bg-primary/15" />
+                <span className="text-xs font-bold text-primary bg-primary/10 px-3 py-1 rounded-full">
+                  {categoryServices.length} {categoryServices.length === 1 ? 'serviço' : 'serviços'}
+                </span>
+              </div>
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                {categoryServices.map((service) => (
+                  <motion.div
+                    key={service.id}
+                    onClick={() => onServiceClick(service)}
+                    whileHover={{ y: -6 }}
+                    className="bg-white rounded-2xl shadow-sm border border-primary/5 hover:shadow-xl transition-all cursor-pointer group overflow-hidden flex flex-col"
+                  >
+                    <div className="aspect-[4/3] w-full overflow-hidden">
+                      <img
+                        src={service.image}
+                        alt={service.title}
+                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                        referrerPolicy="no-referrer"
+                      />
+                    </div>
+                    <div className="p-5 flex flex-col flex-grow">
+                      <h3 className="text-base font-bold mb-1 text-slate-900">{service.title}</h3>
+                      <p className="text-slate-500 text-sm leading-relaxed mb-4 flex-grow">
+                        {service.shortDescription}
+                      </p>
+                      <div className="text-primary text-xs font-bold flex items-center gap-1 group-hover:gap-2 transition-all mt-auto">
+                        Saiba Mais <ArrowRight className="w-3 h-3" />
+                      </div>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+            </section>
+          );
+        })}
+      </div>
+    </motion.div>
+  );
+};
+
+const ServiceDetail = ({
+  service,
+  onBack,
+  backLabel,
+}: {
+  service: Service;
+  onBack: () => void;
+  backLabel?: string;
+}) => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -611,7 +720,7 @@ const ServiceDetail = ({ service, onBack }: { service: Service; onBack: () => vo
         onClick={onBack}
         className="flex items-center gap-2 text-primary font-bold mb-8 hover:gap-3 transition-all"
       >
-        <ArrowLeft className="w-5 h-5" /> Voltar para Início
+        <ArrowLeft className="w-5 h-5" /> {backLabel ?? 'Voltar para Início'}
       </button>
 
       <div className="grid lg:grid-cols-2 gap-12">
@@ -682,14 +791,23 @@ const ServiceDetail = ({ service, onBack }: { service: Service; onBack: () => vo
 export default function App() {
   const [currentPage, setCurrentPage] = useState('home');
   const [selectedService, setSelectedService] = useState<Service | null>(null);
+  const [previousPage, setPreviousPage] = useState('home');
 
   const handleServiceClick = (service: Service) => {
+    setPreviousPage(currentPage);
     setSelectedService(service);
     setCurrentPage('service-detail');
   };
 
   const handleBack = () => {
-    setCurrentPage('home');
+    const dest = previousPage;
+    setPreviousPage('home');
+    setCurrentPage(dest);
+    if (dest === 'home') setSelectedService(null);
+  };
+
+  const handleViewAll = () => {
+    setCurrentPage('all-services');
     setSelectedService(null);
   };
 
@@ -706,12 +824,24 @@ export default function App() {
               exit={{ opacity: 0 }}
             >
               <Hero />
-              <Services onServiceClick={handleServiceClick} />
+              <Services onServiceClick={handleServiceClick} onViewAll={handleViewAll} />
               <About />
               <Testimonials />
             </motion.div>
+          ) : currentPage === 'all-services' ? (
+            <AllServicesPage onServiceClick={handleServiceClick} onBack={handleBack} />
           ) : (
-            selectedService && <ServiceDetail service={selectedService} onBack={handleBack} />
+            selectedService && (
+              <ServiceDetail
+                service={selectedService}
+                onBack={handleBack}
+                backLabel={
+                  previousPage === 'all-services'
+                    ? 'Voltar para Todos os Serviços'
+                    : 'Voltar para Início'
+                }
+              />
+            )
           )}
         </AnimatePresence>
       </main>

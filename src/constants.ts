@@ -13,7 +13,18 @@ export interface Service {
   benefits: string[];
   duration: string;
   price?: string;
+  category: string;
 }
+
+export const SERVICE_CATEGORIES = [
+  'Natural Brows',
+  'Estética Facial',
+  'Lash & Brow',
+  'Depilação',
+  'Massagem',
+  'Nanopigmentação',
+  'Outros',
+];
 
 export const CLINIC_INFO = {
   name: 'Rossi Soares Beauty',
@@ -51,6 +62,7 @@ export const SERVICES: Service[] = [
     ],
     duration: '30 min',
     price: 'R$ 110,00',
+    category: 'Natural Brows',
   },
   {
     id: 'natural-brows-henna',
@@ -62,6 +74,7 @@ export const SERVICES: Service[] = [
     benefits: ['Esfumado perfeito', 'Preenchimento de falhas', 'Longa duração', 'Design exclusivo'],
     duration: '45 min',
     price: 'R$ 150,00',
+    category: 'Natural Brows',
   },
   {
     id: 'natural-brows-man',
@@ -73,6 +86,7 @@ export const SERVICES: Service[] = [
     benefits: ['Leveza e suavidade', 'Aspecto natural', 'Limpeza do olhar', 'Realce masculino'],
     duration: '30 min',
     price: 'R$ 85,00',
+    category: 'Natural Brows',
   },
   {
     id: 'grow-up',
@@ -89,6 +103,7 @@ export const SERVICES: Service[] = [
     ],
     duration: '45 min',
     price: 'R$ 180,00',
+    category: 'Natural Brows',
   },
   {
     id: 'tintura-sobrancelha',
@@ -105,6 +120,7 @@ export const SERVICES: Service[] = [
     ],
     duration: '20 min',
     price: 'R$ 40,00',
+    category: 'Natural Brows',
   },
   {
     id: 'tintura-cilios',
@@ -121,6 +137,7 @@ export const SERVICES: Service[] = [
     ],
     duration: '30 min',
     price: 'R$ 50,00',
+    category: 'Natural Brows',
   },
   {
     id: 'face-spa',
@@ -137,6 +154,7 @@ export const SERVICES: Service[] = [
     ],
     duration: '1h 45min',
     price: 'R$ 350,00',
+    category: 'Estética Facial',
   },
   {
     id: 'limpeza-de-pele',
@@ -153,6 +171,7 @@ export const SERVICES: Service[] = [
     ],
     duration: '1h 30min',
     price: 'R$ 250,00',
+    category: 'Estética Facial',
   },
   {
     id: 'dermaplaning',
@@ -169,6 +188,7 @@ export const SERVICES: Service[] = [
     ],
     duration: '1h',
     price: 'R$ 180,00',
+    category: 'Estética Facial',
   },
   {
     id: 'revitalizacao-facial',
@@ -185,6 +205,7 @@ export const SERVICES: Service[] = [
     ],
     duration: '45 min',
     price: 'R$ 120,00',
+    category: 'Estética Facial',
   },
   {
     id: 'ultra-skin',
@@ -201,6 +222,7 @@ export const SERVICES: Service[] = [
     ],
     duration: '45 min',
     price: 'R$ 150,00',
+    category: 'Estética Facial',
   },
   {
     id: 'velvet-glow',
@@ -217,6 +239,7 @@ export const SERVICES: Service[] = [
     ],
     duration: '1h',
     price: 'R$ 250,00',
+    category: 'Estética Facial',
   },
   {
     id: 'revitalift',
@@ -233,6 +256,7 @@ export const SERVICES: Service[] = [
     ],
     duration: '30 min',
     price: 'R$ 150,00',
+    category: 'Estética Facial',
   },
   {
     id: 'dermo-glow',
@@ -249,6 +273,7 @@ export const SERVICES: Service[] = [
     ],
     duration: '45 min',
     price: 'R$ 180,00',
+    category: 'Estética Facial',
   },
   {
     id: 'microagulhamento',
@@ -265,6 +290,7 @@ export const SERVICES: Service[] = [
     ],
     duration: '45 min',
     price: 'R$ 150,00',
+    category: 'Estética Facial',
   },
   {
     id: 'natural-pump',
@@ -281,6 +307,7 @@ export const SERVICES: Service[] = [
     ],
     duration: '30 min',
     price: 'R$ 150,00',
+    category: 'Estética Facial',
   },
   {
     id: 'brow-lamination',
@@ -297,6 +324,7 @@ export const SERVICES: Service[] = [
     ],
     duration: '1h',
     price: 'R$ 200,00',
+    category: 'Lash & Brow',
   },
   {
     id: 'lash-lifting',
@@ -308,6 +336,7 @@ export const SERVICES: Service[] = [
     benefits: ['Curvatura ideal', 'Volume natural', 'Olhar marcante', 'Disensa curvex'],
     duration: '1h 15min',
     price: 'R$ 200,00',
+    category: 'Lash & Brow',
   },
   {
     id: 'epilacao-buco',
@@ -324,6 +353,7 @@ export const SERVICES: Service[] = [
     ],
     duration: '15 min',
     price: 'R$ 35,00',
+    category: 'Depilação',
   },
   {
     id: 'epilacao-barba',
@@ -335,6 +365,7 @@ export const SERVICES: Service[] = [
     benefits: ['Maior durabilidade', 'Pele mais macia', 'Contorno definido', 'Reduz crescimento'],
     duration: '30 min',
     price: 'R$ 70,00',
+    category: 'Depilação',
   },
   {
     id: 'epilacao-facial',
@@ -346,6 +377,7 @@ export const SERVICES: Service[] = [
     benefits: ['Não agride a pele', 'Remove pelos finos', 'Não mancha', 'Estimula a circulação'],
     duration: '45 min',
     price: 'R$ 100,00',
+    category: 'Depilação',
   },
   {
     id: 'massagem',
@@ -369,6 +401,7 @@ export const SERVICES: Service[] = [
     ],
     duration: '50 min',
     price: 'R$ 120,00',
+    category: 'Massagem',
   },
   {
     id: 'avaliacao',
@@ -385,6 +418,7 @@ export const SERVICES: Service[] = [
     ],
     duration: '15 min',
     price: 'R$ 50,00',
+    category: 'Outros',
   },
   {
     id: 'despigmentacao',
@@ -401,6 +435,7 @@ export const SERVICES: Service[] = [
     ],
     duration: '1h e 30 min',
     price: 'Valor a consultar',
+    category: 'Outros',
   },
   {
     id: 'nano-brows',
@@ -418,6 +453,7 @@ export const SERVICES: Service[] = [
     ],
     duration: '1 hora e 30 minutos',
     price: 'Valor a consultar',
+    category: 'Nanopigmentação',
   },
   {
     id: 'nano-lips',
@@ -435,6 +471,7 @@ export const SERVICES: Service[] = [
     ],
     duration: '2 horas',
     price: 'Valor a consultar',
+    category: 'Nanopigmentação',
   },
   {
     id: 'nano-line',
@@ -452,6 +489,7 @@ export const SERVICES: Service[] = [
     ],
     duration: '1 hora e 30 minutos',
     price: 'Valor a consultar',
+    category: 'Nanopigmentação',
   },
 ];
 
