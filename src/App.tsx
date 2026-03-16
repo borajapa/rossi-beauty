@@ -618,18 +618,25 @@ const ServiceDetail = ({ service, onBack }: { service: Service; onBack: () => vo
         <div className="space-y-8">
           <div className="space-y-4">
             <h1 className="text-4xl lg:text-5xl font-extrabold text-slate-900">{service.title}</h1>
-            <div className="flex items-center gap-4 text-slate-500 font-semibold">
-              <div className="flex items-center gap-1">
-                <Clock className="w-5 h-5 text-primary" />
-                {service.duration}
-              </div>
-              {service.price && (
-                <div className="text-primary font-bold">A partir de {service.price}</div>
-              )}
+            <div className="flex items-center gap-1 text-slate-500 font-semibold">
+              <Clock className="w-5 h-5 text-primary" />
+              {service.duration}
             </div>
           </div>
 
-          <p className="text-lg text-slate-700 leading-relaxed">{service.fullDescription}</p>
+          <div className="space-y-3">
+            <p className="text-lg text-slate-700 leading-relaxed">{service.fullDescription}</p>
+            {service.topics && service.topics.length > 0 && (
+              <ul className="space-y-2 pl-1">
+                {service.topics.map((topic, i) => (
+                  <li key={i} className="flex items-start gap-2 text-slate-700">
+                    <span className="text-primary font-bold mt-1">•</span>
+                    <span>{topic}</span>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </div>
 
           <div className="space-y-4">
             <h3 className="text-xl font-bold text-slate-900">Benefícios do Tratamento</h3>

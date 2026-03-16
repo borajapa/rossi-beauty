@@ -8,6 +8,7 @@ export interface Service {
   title: string;
   shortDescription: string;
   fullDescription: string;
+  topics?: string[];
   image: string;
   benefits: string[];
   duration: string;
@@ -350,8 +351,15 @@ export const SERVICES: Service[] = [
     id: 'massagem',
     title: 'Massagem',
     shortDescription: 'Diversos tipos de massagens focadas no seu bem-estar.',
-    fullDescription:
-      'Escolha a melhor massagem para o seu momento: Relaxante (renova energias), Drenagem (alivia inchaços), Modeladora (foco no contorno corporal), Bambuterapia (relaxamento e modelagem), Liberação Miofascial (pontos de dor) ou Candle Massage (hidratação intensa com velas).',
+    fullDescription: 'Escolha a massagem ideal para o seu momento:',
+    topics: [
+      'Relaxante - ideal para desacelerar e renovar as energias.',
+      'Drenagem Linfática - para aliviar inchaços e sensação de peso.',
+      'Modeladora - para quem deseja focar no contorno corporal.',
+      'Bambuterapia - relaxamento profundo com efeitos modeladores.',
+      'Liberação Miofascial - ideal para pontos de dor e rigidez.',
+      'Candle Massage - hidratação intensa com óleo aromático das velas.',
+    ],
     image: '/servicos/Massagem/massagem_relaxante.jpg',
     benefits: [
       'Relaxamento profundo',
@@ -359,7 +367,7 @@ export const SERVICES: Service[] = [
       'Melhora da circulação',
       'Renovação de energias',
     ],
-    duration: '1h 15min',
+    duration: '50 min',
     price: 'R$ 120,00',
   },
   {
@@ -368,7 +376,7 @@ export const SERVICES: Service[] = [
     shortDescription: 'Conversa esclarecedora e indicação do melhor plano de tratamento.',
     fullDescription:
       'Agende uma avaliação caso esteja com dúvida sobre algum procedimento. Tenha uma conversa esclarecedora com a profissional que irá orientá-la com o melhor plano de tratamento. O valor pago será abatido caso haja o agendamento do procedimento.',
-    image: '/servicos/Avaliação/avaliacao.jpg',
+    image: '/servicos/Avaliacao/avaliacao.jpg',
     benefits: [
       'Tira-dúvidas',
       'Plano personalizado',
@@ -377,6 +385,73 @@ export const SERVICES: Service[] = [
     ],
     duration: '15 min',
     price: 'R$ 50,00',
+  },
+  {
+    id: 'despigmentacao',
+    title: 'Despigmentação',
+    shortDescription: 'Conversa esclarecedora e indicação do melhor plano de tratamento.',
+    fullDescription:
+      'Método de remoção LQ que concilia duas técnicas de despigmentação: química e laser.Otimiza o tratamento e trás um resultado muito mais satisfatório. Diga adeus à micropigmentação antiga e tenha novamente suas sobrancelhas naturais.',
+    image: '/servicos/Despigmentacao/despigmentacao.jpg',
+    benefits: [
+      'Remove micropigmentação antiga',
+      'Técnica combinada (química e laser)',
+      'Resultado satisfatório',
+      'Sobrancelhas naturais',
+    ],
+    duration: '1h e 30 min',
+    price: 'Valor a consultar',
+  },
+  {
+    id: 'nano-brows',
+    title: 'Nano Brows',
+    shortDescription:
+      'Técnica de desenhar fios imperceptíveis que se camuflam aos naturais, com naturalidade e design único.',
+    fullDescription:
+      'Técnica de desenhar fios imperceptíveis na pele que se camuflam aos naturais trazendo naturalidade além de uma sobrancelha preenchida, sem falhas e com um design naturalmente único.',
+    image: '/servicos/Nano/nano-brows.jpg',
+    benefits: [
+      'Fios imperceptíveis',
+      'Visual totalmente natural',
+      'Preenche falhas',
+      'Design personalizado',
+    ],
+    duration: '1 hora e 30 minutos',
+    price: 'Valor a consultar',
+  },
+  {
+    id: 'nano-lips',
+    title: 'Nano Lips',
+    shortDescription:
+      'Nanopigmentação labial que realça a cor natural, melhora o contorno e devolve viço aos lábios.',
+    fullDescription:
+      'Nanopigmentação labial que realça a cor natural dos lábios, melhora o contorno e devolve viço e uniformidade à região labial. A técnica proporciona efeito de lábios mais saudáveis, hidratados e corados, sem marcar ou criar aspecto artificial.',
+    image: '/servicos/Nano/Nano-lips.jpg',
+    benefits: [
+      'Realça a cor natural',
+      'Melhora o contorno',
+      'Efeito saudável e natural',
+      'Sem aspecto artificial',
+    ],
+    duration: '2 horas',
+    price: 'Valor a consultar',
+  },
+  {
+    id: 'nano-line',
+    title: 'Nano Line',
+    shortDescription:
+      'Nanopigmentação que cria um delineado delicado e preciso na linha dos cílios superiores.',
+    fullDescription:
+      'Nanopigmentação que cria um delineado delicado e preciso, depositando pigmento de forma suave na linha dos cílios superiores. Proporciona definição ao olhar, efeito de cílios mais preenchidos e acabamento natural, sem traços marcados ou efeito de maquiagem pesada. O procedimento é personalizado de acordo com o formato dos olhos, realizado com pigmentos específicos e técnica segura, garantindo um resultado elegante e harmônico.',
+    image: '/servicos/Nano/Nano-line.png',
+    benefits: [
+      'Delineado natural e preciso',
+      'Cílios com aspecto preenchido',
+      'Personalizado ao formato dos olhos',
+      'Resultado elegante e harmônico',
+    ],
+    duration: '1 hora e 30 minutos',
+    price: 'Valor a consultar',
   },
 ];
 
