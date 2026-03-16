@@ -389,7 +389,7 @@ export const SERVICES: Service[] = [
   {
     id: 'despigmentacao',
     title: 'Despigmentação',
-    shortDescription: 'Conversa esclarecedora e indicação do melhor plano de tratamento.',
+    shortDescription: 'Método de remoção de micropigmentação e tatuagem.',
     fullDescription:
       'Método de remoção LQ que concilia duas técnicas de despigmentação: química e laser.Otimiza o tratamento e trás um resultado muito mais satisfatório. Diga adeus à micropigmentação antiga e tenha novamente suas sobrancelhas naturais.',
     image: '/servicos/Despigmentacao/despigmentacao.jpg',
