@@ -61,7 +61,7 @@ export const SERVICES: Service[] = [
       'Valor abatido no agendamento',
     ],
     duration: '15 min',
-    category: 'Outros',
+    category: 'Avaliação',
   },
   {
     id: 'nano-brows',
