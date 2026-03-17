@@ -12,23 +12,23 @@ export interface Service {
   image: string;
   benefits: string[];
   duration: string;
-  price?: string;
   category: string;
 }
 
 export const SERVICE_CATEGORIES = [
+  'Avaliação',
+  'Nanopigmentação',
   'Natural Brows',
+  'Despigmentação',
   'Estética Facial',
   'Lash & Brow',
   'Depilação',
   'Massagem',
-  'Nanopigmentação',
-  'Outros',
 ];
 
 export const CLINIC_INFO = {
   name: 'Rossi Soares Beauty',
-  logo: '/index/logo.png',
+  logo: '/index/LogoR.png',
   tagline: 'Naturalmente Única',
   description:
     'Descubra uma experiência de cuidado e bem-estar em um espaço pensado para você. Nosso propósito é valorizar a beleza natural com excelência, técnica e atenção genuína em cada atendimento com tratamentos personalizados.',
@@ -48,6 +48,73 @@ export const CLINIC_INFO = {
 
 export const SERVICES: Service[] = [
   {
+    id: 'avaliacao',
+    title: 'Avaliação',
+    shortDescription: 'Conversa esclarecedora e indicação do melhor plano de tratamento.',
+    fullDescription:
+      'Agende uma avaliação caso esteja com dúvida sobre algum procedimento. Tenha uma conversa esclarecedora com a profissional que irá orientá-la com o melhor plano de tratamento. O valor pago será abatido caso haja o agendamento do procedimento.',
+    image: '/servicos/Avaliacao/avaliacao.jpg',
+    benefits: [
+      'Tira-dúvidas',
+      'Plano personalizado',
+      'Orientação profissional',
+      'Valor abatido no agendamento',
+    ],
+    duration: '15 min',
+    category: 'Outros',
+  },
+  {
+    id: 'nano-brows',
+    title: 'Nano Brows',
+    shortDescription:
+      'Técnica de desenhar fios imperceptíveis que se camuflam aos naturais, com naturalidade e design único.',
+    fullDescription:
+      'Técnica de desenhar fios imperceptíveis na pele que se camuflam aos naturais trazendo naturalidade além de uma sobrancelha preenchida, sem falhas e com um design naturalmente único.',
+    image: '/servicos/Nano/nano-brows.jpg',
+    benefits: [
+      'Fios imperceptíveis',
+      'Visual totalmente natural',
+      'Preenche falhas',
+      'Design personalizado',
+    ],
+    duration: '1 hora e 30 minutos',
+    category: 'Nanopigmentação',
+  },
+  {
+    id: 'nano-lips',
+    title: 'Nano Lips',
+    shortDescription:
+      'Nanopigmentação labial que realça a cor natural, melhora o contorno e devolve viço aos lábios.',
+    fullDescription:
+      'Nanopigmentação labial que realça a cor natural dos lábios, melhora o contorno e devolve viço e uniformidade à região labial. A técnica proporciona efeito de lábios mais saudáveis, hidratados e corados, sem marcar ou criar aspecto artificial.',
+    image: '/servicos/Nano/Nano-lips.jpg',
+    benefits: [
+      'Realça a cor natural',
+      'Melhora o contorno',
+      'Efeito saudável e natural',
+      'Sem aspecto artificial',
+    ],
+    duration: '2 horas',
+    category: 'Nanopigmentação',
+  },
+  {
+    id: 'nano-line',
+    title: 'Nano Line',
+    shortDescription:
+      'Nanopigmentação que cria um delineado delicado e preciso na linha dos cílios superiores.',
+    fullDescription:
+      'Nanopigmentação que cria um delineado delicado e preciso, depositando pigmento de forma suave na linha dos cílios superiores. Proporciona definição ao olhar, efeito de cílios mais preenchidos e acabamento natural, sem traços marcados ou efeito de maquiagem pesada. O procedimento é personalizado de acordo com o formato dos olhos, realizado com pigmentos específicos e técnica segura, garantindo um resultado elegante e harmônico.',
+    image: '/servicos/Nano/Nano-line.png',
+    benefits: [
+      'Delineado natural e preciso',
+      'Cílios com aspecto preenchido',
+      'Personalizado ao formato dos olhos',
+      'Resultado elegante e harmônico',
+    ],
+    duration: '1 hora e 30 minutos',
+    category: 'Nanopigmentação',
+  },
+  {
     id: 'natural-brows',
     title: 'Natural Brows (Design de Sobrancelha)',
     shortDescription: 'Um design inovador que busca ressaltar o natural fugindo dos padrões.',
@@ -61,7 +128,6 @@ export const SERVICES: Service[] = [
       'Técnica exclusiva',
     ],
     duration: '30 min',
-    price: 'R$ 110,00',
     category: 'Natural Brows',
   },
   {
@@ -73,7 +139,6 @@ export const SERVICES: Service[] = [
     image: '/servicos/Natutal Brows/natural-brows-henna.jpg',
     benefits: ['Esfumado perfeito', 'Preenchimento de falhas', 'Longa duração', 'Design exclusivo'],
     duration: '45 min',
-    price: 'R$ 150,00',
     category: 'Natural Brows',
   },
   {
@@ -85,7 +150,6 @@ export const SERVICES: Service[] = [
     image: '/servicos/Natutal Brows/natural-brows-man.jpg',
     benefits: ['Leveza e suavidade', 'Aspecto natural', 'Limpeza do olhar', 'Realce masculino'],
     duration: '30 min',
-    price: 'R$ 85,00',
     category: 'Natural Brows',
   },
   {
@@ -102,7 +166,6 @@ export const SERVICES: Service[] = [
       'Fios mais fortes',
     ],
     duration: '45 min',
-    price: 'R$ 180,00',
     category: 'Natural Brows',
   },
   {
@@ -119,7 +182,6 @@ export const SERVICES: Service[] = [
       'Praticidade diária',
     ],
     duration: '20 min',
-    price: 'R$ 40,00',
     category: 'Natural Brows',
   },
   {
@@ -136,8 +198,23 @@ export const SERVICES: Service[] = [
       'Praticidade',
     ],
     duration: '30 min',
-    price: 'R$ 50,00',
     category: 'Natural Brows',
+  },
+  {
+    id: 'despigmentacao',
+    title: 'Despigmentação',
+    shortDescription: 'Método de remoção de micropigmentação e tatuagem.',
+    fullDescription:
+      'Método de remoção LQ que concilia duas técnicas de despigmentação: química e laser.Otimiza o tratamento e trás um resultado muito mais satisfatório. Diga adeus à micropigmentação antiga e tenha novamente suas sobrancelhas naturais.',
+    image: '/servicos/Despigmentacao/despigmentacao.jpg',
+    benefits: [
+      'Remove micropigmentação antiga',
+      'Técnica combinada (química e laser)',
+      'Resultado satisfatório',
+      'Sobrancelhas naturais',
+    ],
+    duration: '1h e 30 min',
+    category: 'Despigmentação',
   },
   {
     id: 'face-spa',
@@ -153,7 +230,6 @@ export const SERVICES: Service[] = [
       'Renovação celular',
     ],
     duration: '1h 45min',
-    price: 'R$ 350,00',
     category: 'Estética Facial',
   },
   {
@@ -170,7 +246,6 @@ export const SERVICES: Service[] = [
       'Pele iluminada',
     ],
     duration: '1h 30min',
-    price: 'R$ 250,00',
     category: 'Estética Facial',
   },
   {
@@ -187,7 +262,6 @@ export const SERVICES: Service[] = [
       'Melhora absorção de produtos',
     ],
     duration: '1h',
-    price: 'R$ 180,00',
     category: 'Estética Facial',
   },
   {
@@ -204,7 +278,6 @@ export const SERVICES: Service[] = [
       'Nutrição celular',
     ],
     duration: '45 min',
-    price: 'R$ 120,00',
     category: 'Estética Facial',
   },
   {
@@ -221,7 +294,6 @@ export const SERVICES: Service[] = [
       'Estímulo da circulação',
     ],
     duration: '45 min',
-    price: 'R$ 150,00',
     category: 'Estética Facial',
   },
   {
@@ -238,7 +310,6 @@ export const SERVICES: Service[] = [
       'Brilho intenso',
     ],
     duration: '1h',
-    price: 'R$ 250,00',
     category: 'Estética Facial',
   },
   {
@@ -255,7 +326,6 @@ export const SERVICES: Service[] = [
       'Ativa circulação',
     ],
     duration: '30 min',
-    price: 'R$ 150,00',
     category: 'Estética Facial',
   },
   {
@@ -272,7 +342,6 @@ export const SERVICES: Service[] = [
       'Renovação epitelial',
     ],
     duration: '45 min',
-    price: 'R$ 180,00',
     category: 'Estética Facial',
   },
   {
@@ -289,7 +358,6 @@ export const SERVICES: Service[] = [
       'Firmeza e brilho',
     ],
     duration: '45 min',
-    price: 'R$ 150,00',
     category: 'Estética Facial',
   },
   {
@@ -306,7 +374,6 @@ export const SERVICES: Service[] = [
       'Estimula colágeno labial',
     ],
     duration: '30 min',
-    price: 'R$ 150,00',
     category: 'Estética Facial',
   },
   {
@@ -323,7 +390,6 @@ export const SERVICES: Service[] = [
       'Durabilidade incrível',
     ],
     duration: '1h',
-    price: 'R$ 200,00',
     category: 'Lash & Brow',
   },
   {
@@ -335,7 +401,6 @@ export const SERVICES: Service[] = [
     image: '/servicos/Lash e Brow/lash_lifting.jpg',
     benefits: ['Curvatura ideal', 'Volume natural', 'Olhar marcante', 'Disensa curvex'],
     duration: '1h 15min',
-    price: 'R$ 200,00',
     category: 'Lash & Brow',
   },
   {
@@ -352,7 +417,6 @@ export const SERVICES: Service[] = [
       'Rápido e prático',
     ],
     duration: '15 min',
-    price: 'R$ 35,00',
     category: 'Depilação',
   },
   {
@@ -364,7 +428,6 @@ export const SERVICES: Service[] = [
     image: '/servicos/Depilacao/epilacao_de_barba.jpg',
     benefits: ['Maior durabilidade', 'Pele mais macia', 'Contorno definido', 'Reduz crescimento'],
     duration: '30 min',
-    price: 'R$ 70,00',
     category: 'Depilação',
   },
   {
@@ -376,7 +439,6 @@ export const SERVICES: Service[] = [
     image: '/servicos/Depilacao/depilacao_facial.png',
     benefits: ['Não agride a pele', 'Remove pelos finos', 'Não mancha', 'Estimula a circulação'],
     duration: '45 min',
-    price: 'R$ 100,00',
     category: 'Depilação',
   },
   {
@@ -400,96 +462,7 @@ export const SERVICES: Service[] = [
       'Renovação de energias',
     ],
     duration: '50 min',
-    price: 'R$ 120,00',
     category: 'Massagem',
-  },
-  {
-    id: 'avaliacao',
-    title: 'Avaliação',
-    shortDescription: 'Conversa esclarecedora e indicação do melhor plano de tratamento.',
-    fullDescription:
-      'Agende uma avaliação caso esteja com dúvida sobre algum procedimento. Tenha uma conversa esclarecedora com a profissional que irá orientá-la com o melhor plano de tratamento. O valor pago será abatido caso haja o agendamento do procedimento.',
-    image: '/servicos/Avaliacao/avaliacao.jpg',
-    benefits: [
-      'Tira-dúvidas',
-      'Plano personalizado',
-      'Orientação profissional',
-      'Valor abatido no agendamento',
-    ],
-    duration: '15 min',
-    price: 'R$ 50,00',
-    category: 'Outros',
-  },
-  {
-    id: 'despigmentacao',
-    title: 'Despigmentação',
-    shortDescription: 'Método de remoção de micropigmentação e tatuagem.',
-    fullDescription:
-      'Método de remoção LQ que concilia duas técnicas de despigmentação: química e laser.Otimiza o tratamento e trás um resultado muito mais satisfatório. Diga adeus à micropigmentação antiga e tenha novamente suas sobrancelhas naturais.',
-    image: '/servicos/Despigmentacao/despigmentacao.jpg',
-    benefits: [
-      'Remove micropigmentação antiga',
-      'Técnica combinada (química e laser)',
-      'Resultado satisfatório',
-      'Sobrancelhas naturais',
-    ],
-    duration: '1h e 30 min',
-    price: 'Valor a consultar',
-    category: 'Outros',
-  },
-  {
-    id: 'nano-brows',
-    title: 'Nano Brows',
-    shortDescription:
-      'Técnica de desenhar fios imperceptíveis que se camuflam aos naturais, com naturalidade e design único.',
-    fullDescription:
-      'Técnica de desenhar fios imperceptíveis na pele que se camuflam aos naturais trazendo naturalidade além de uma sobrancelha preenchida, sem falhas e com um design naturalmente único.',
-    image: '/servicos/Nano/nano-brows.jpg',
-    benefits: [
-      'Fios imperceptíveis',
-      'Visual totalmente natural',
-      'Preenche falhas',
-      'Design personalizado',
-    ],
-    duration: '1 hora e 30 minutos',
-    price: 'Valor a consultar',
-    category: 'Nanopigmentação',
-  },
-  {
-    id: 'nano-lips',
-    title: 'Nano Lips',
-    shortDescription:
-      'Nanopigmentação labial que realça a cor natural, melhora o contorno e devolve viço aos lábios.',
-    fullDescription:
-      'Nanopigmentação labial que realça a cor natural dos lábios, melhora o contorno e devolve viço e uniformidade à região labial. A técnica proporciona efeito de lábios mais saudáveis, hidratados e corados, sem marcar ou criar aspecto artificial.',
-    image: '/servicos/Nano/Nano-lips.jpg',
-    benefits: [
-      'Realça a cor natural',
-      'Melhora o contorno',
-      'Efeito saudável e natural',
-      'Sem aspecto artificial',
-    ],
-    duration: '2 horas',
-    price: 'Valor a consultar',
-    category: 'Nanopigmentação',
-  },
-  {
-    id: 'nano-line',
-    title: 'Nano Line',
-    shortDescription:
-      'Nanopigmentação que cria um delineado delicado e preciso na linha dos cílios superiores.',
-    fullDescription:
-      'Nanopigmentação que cria um delineado delicado e preciso, depositando pigmento de forma suave na linha dos cílios superiores. Proporciona definição ao olhar, efeito de cílios mais preenchidos e acabamento natural, sem traços marcados ou efeito de maquiagem pesada. O procedimento é personalizado de acordo com o formato dos olhos, realizado com pigmentos específicos e técnica segura, garantindo um resultado elegante e harmônico.',
-    image: '/servicos/Nano/Nano-line.png',
-    benefits: [
-      'Delineado natural e preciso',
-      'Cílios com aspecto preenchido',
-      'Personalizado ao formato dos olhos',
-      'Resultado elegante e harmônico',
-    ],
-    duration: '1 hora e 30 minutos',
-    price: 'Valor a consultar',
-    category: 'Nanopigmentação',
   },
 ];
 

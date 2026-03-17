@@ -22,15 +22,15 @@ Site institucional da **Rossi Soares Beauty** — clínica de estética localiza
 
 ## 🛠 Stack
 
-| Tecnologia | Versão |
-|---|---|
-| React | 19 |
-| TypeScript | 5.8 |
-| Tailwind CSS | 4 |
-| Vite | 6 |
-| Motion (Framer Motion) | 12 |
-| Lucide React | latest |
-| React Icons | 5 |
+| Tecnologia             | Versão |
+| ---------------------- | ------ |
+| React                  | 19     |
+| TypeScript             | 5.8    |
+| Tailwind CSS           | 4      |
+| Vite                   | 6      |
+| Motion (Framer Motion) | 12     |
+| Lucide React           | latest |
+| React Icons            | 5      |
 
 ---
 
@@ -50,14 +50,14 @@ Acesse em `http://localhost:3000`.
 
 ## 📦 Scripts disponíveis
 
-| Comando | Descrição |
-|---|---|
-| `npm run dev` | Servidor de desenvolvimento |
-| `npm run build` | Gera o bundle de produção em `/dist` |
-| `npm run preview` | Preview do build de produção |
-| `npm run lint` | Verifica erros de ESLint |
-| `npm run format` | Formata o código com Prettier |
-| `npm run deploy` | Publica no GitHub Pages |
+| Comando           | Descrição                            |
+| ----------------- | ------------------------------------ |
+| `npm run dev`     | Servidor de desenvolvimento          |
+| `npm run build`   | Gera o bundle de produção em `/dist` |
+| `npm run preview` | Preview do build de produção         |
+| `npm run lint`    | Verifica erros de ESLint             |
+| `npm run format`  | Formata o código com Prettier        |
+| `npm run deploy`  | Publica no GitHub Pages              |
 
 ---
 
