@@ -31,6 +31,7 @@ import {
   Service,
   handleWhatsAppClick,
   handleScheduleClick,
+  TEXTS,
 } from './constants';
 
 const Navbar = ({
@@ -384,6 +385,38 @@ const About = () => {
 
 const Testimonials = () => {
   const scrollRef = useRef<HTMLDivElement>(null);
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  const dotsCount = 5;
+
+  const handleScroll = () => {
+    if (scrollRef.current) {
+      const { scrollLeft, scrollWidth, clientWidth } = scrollRef.current;
+      const maxScroll = scrollWidth - clientWidth;
+      
+      if (maxScroll <= 0) {
+        setActiveIndex(0);
+      } else {
+        const progress = scrollLeft / maxScroll;
+        const targetIndex = Math.round(progress * (dotsCount - 1));
+        setActiveIndex(Math.min(dotsCount - 1, Math.max(0, targetIndex)));
+      }
+    }
+  };
+
+  const scrollToDot = (index: number) => {
+    if (scrollRef.current) {
+      const { scrollWidth, clientWidth } = scrollRef.current;
+      const maxScroll = scrollWidth - clientWidth;
+      if (maxScroll > 0) {
+        let targetScrollLeft = (index / (dotsCount - 1)) * maxScroll;
+        if (index === dotsCount - 1) {
+          targetScrollLeft = maxScroll;
+        }
+        scrollRef.current.scrollTo({ left: targetScrollLeft, behavior: 'smooth' });
+      }
+    }
+  };
 
   const scroll = (direction: 'left' | 'right') => {
     if (scrollRef.current) {
@@ -455,6 +488,7 @@ const Testimonials = () => {
         <div className="relative">
           <div
             ref={scrollRef}
+            onScroll={handleScroll}
             className="flex overflow-x-auto gap-0 sm:gap-8 pb-8 snap-x snap-mandatory hide-scrollbar -mx-6 px-0 sm:px-6 md:mx-0 md:px-0"
           >
             {TESTIMONIALS.map((review, index) => (
@@ -490,13 +524,29 @@ const Testimonials = () => {
               </motion.div>
             ))}
           </div>
+
+          {/* Indicadores de Rolagem (Bolinhas) */}
+          <div className="flex justify-center items-center gap-2 mt-2 md:mt-4">
+            {[...Array(dotsCount)].map((_, index) => (
+              <button
+                key={index}
+                onClick={() => scrollToDot(index)}
+                aria-label={`Ir para página ${index + 1}`}
+                className={`h-2.5 rounded-full transition-all duration-300 ${
+                  activeIndex === index
+                    ? 'bg-white w-8'
+                    : 'bg-white/30 hover:bg-white/50 w-2.5'
+                }`}
+              />
+            ))}
+          </div>
         </div>
       </div>
     </section>
   );
 };
 
-const Footer = () => {
+const Footer = ({ onOpenPrivacy, onOpenTerms }: { onOpenPrivacy: () => void; onOpenTerms: () => void }) => {
   return (
     <footer id="contact" className="bg-white border-t border-primary/10 pt-20 pb-10 px-6 lg:px-12">
       <div className="max-w-7xl mx-auto">
@@ -598,12 +648,12 @@ const Footer = () => {
         <div className="border-t border-primary/10 pt-10 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-slate-500">
           <p>© 2026 {CLINIC_INFO.name}. Todos os direitos reservados.</p>
           <div className="flex gap-8">
-            <a href="#" className="hover:text-primary">
+            <button onClick={(e) => { e.preventDefault(); onOpenPrivacy(); }} className="hover:text-primary text-left">
               Política de Privacidade
-            </a>
-            <a href="#" className="hover:text-primary">
+            </button>
+            <button onClick={(e) => { e.preventDefault(); onOpenTerms(); }} className="hover:text-primary text-left">
               Termos de Serviço
-            </a>
+            </button>
           </div>
         </div>
       </div>
@@ -776,20 +826,100 @@ const ServiceDetail = ({
               referrerPolicy="no-referrer"
             />
           </div>
-          <div className="absolute -bottom-6 -left-6 bg-white p-6 rounded-2xl shadow-xl border border-primary/10 max-w-[200px]">
-            <p className="text-xs font-bold text-primary uppercase mb-2">Dica da Especialista</p>
-            <p className="text-sm text-slate-600 italic">
-              "Resultados visíveis desde a primeira sessão."
-            </p>
-          </div>
         </div>
       </div>
     </motion.div>
   );
 };
 
+const Modal = ({ isOpen, onClose, title, children }: { isOpen: boolean; onClose: () => void; title: string; children: React.ReactNode }) => {
+  if (!isOpen) return null;
+  return (
+    <AnimatePresence>
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6 bg-slate-900/50 backdrop-blur-sm"
+        onClick={onClose}
+      >
+        <motion.div
+          initial={{ scale: 0.95, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          exit={{ scale: 0.95, opacity: 0 }}
+          onClick={(e) => e.stopPropagation()}
+          className="bg-white rounded-2xl shadow-2xl w-full max-w-2xl max-h-[90vh] flex flex-col overflow-hidden"
+        >
+          <div className="flex items-center justify-between p-6 border-b border-slate-100">
+            <h3 className="text-xl font-bold text-slate-900">{title}</h3>
+            <button onClick={onClose} className="p-2 text-slate-400 hover:bg-slate-100 hover:text-slate-600 rounded-full transition-colors">
+              <X className="w-5 h-5" />
+            </button>
+          </div>
+          <div className="p-6 overflow-y-auto flex-grow text-slate-600 prose prose-slate">
+            {children}
+          </div>
+          <div className="p-6 border-t border-slate-100 bg-slate-50 flex justify-end">
+            <button onClick={onClose} className="bg-primary text-white px-6 py-2.5 rounded-xl font-bold shadow-md hover:bg-primary/90 transition-colors">
+              Entendi
+            </button>
+          </div>
+        </motion.div>
+      </motion.div>
+    </AnimatePresence>
+  );
+};
+
+const CookieConsent = () => {
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const hasConsented = localStorage.getItem('cookie_consent');
+    if (!hasConsented) {
+      // Small delay to not show instantly on load
+      const timer = setTimeout(() => setIsVisible(true), 1500);
+      return () => clearTimeout(timer);
+    }
+  }, []);
+
+  const handleAccept = () => {
+    localStorage.setItem('cookie_consent', 'true');
+    setIsVisible(false);
+  };
+
+  if (!isVisible) return null;
+
+  return (
+    <AnimatePresence>
+      <motion.div
+        initial={{ y: 100, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        exit={{ y: 100, opacity: 0 }}
+        className="fixed bottom-0 left-0 right-0 z-[60] shadow-2xl"
+      >
+        <div className="w-full bg-[#9c8383] text-white p-4 sm:p-6 flex flex-col sm:flex-row items-center justify-center gap-6">
+          <div className="w-full max-w-4xl text-sm sm:text-base text-white/90 text-center sm:text-left">
+            Usamos cookies para melhorar sua experiência em nosso site, personalizar conteúdo e analisar nosso tráfego. 
+            Ao continuar navegando, você concorda com a nossa <strong className="text-white">Política de Privacidade</strong>.
+          </div>
+          <div className="flex-shrink-0 w-full sm:w-auto mt-2 sm:mt-0">
+            <button
+              onClick={handleAccept}
+              className="w-full sm:w-auto bg-[#fffafa] text-[#9c8383] px-8 py-3 rounded-xl font-bold shadow-xl hover:bg-white hover:scale-105 active:scale-95 transition-all whitespace-nowrap"
+            >
+              Aceitar Cookies
+            </button>
+          </div>
+        </div>
+      </motion.div>
+    </AnimatePresence>
+  );
+};
+
 export default function App() {
   const [currentPage, setCurrentPage] = useState('home');
+  const [isPrivacyOpen, setIsPrivacyOpen] = useState(false);
+  const [isTermsOpen, setIsTermsOpen] = useState(false);
   const [selectedService, setSelectedService] = useState<Service | null>(null);
   const [previousPage, setPreviousPage] = useState('home');
 
@@ -845,7 +975,7 @@ export default function App() {
           )}
         </AnimatePresence>
       </main>
-      <Footer />
+      <Footer onOpenPrivacy={() => setIsPrivacyOpen(true)} onOpenTerms={() => setIsTermsOpen(true)} />
 
       {/* Floating WhatsApp Button */}
       <motion.button
@@ -858,6 +988,34 @@ export default function App() {
       >
         <FaWhatsapp />
       </motion.button>
+
+      {/* Modals */}
+      <Modal isOpen={isPrivacyOpen} onClose={() => setIsPrivacyOpen(false)} title="Política de Privacidade">
+        <div className="space-y-4">
+          <p>{TEXTS.privacyIntro}</p>
+          {TEXTS.privacyItems.map((item, index) => (
+            <React.Fragment key={index}>
+              <h4 className="font-bold text-slate-800">{item.title}</h4>
+              <p>{item.text}</p>
+            </React.Fragment>
+          ))}
+        </div>
+      </Modal>
+
+      <Modal isOpen={isTermsOpen} onClose={() => setIsTermsOpen(false)} title="Termos de Serviço">
+        <div className="space-y-4">
+          <p>{TEXTS.termsIntro}</p>
+          {TEXTS.termsItems.map((item, index) => (
+            <React.Fragment key={index}>
+              <h4 className="font-bold text-slate-800">{item.title}</h4>
+              <p>{item.text}</p>
+            </React.Fragment>
+          ))}
+        </div>
+      </Modal>
+
+      {/* Cookie Consent */}
+      <CookieConsent />
     </div>
   );
 }

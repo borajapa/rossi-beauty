@@ -70,7 +70,7 @@ export const SERVICES: Service[] = [
       'Técnica de desenhar fios imperceptíveis que se camuflam aos naturais, com naturalidade e design único.',
     fullDescription:
       'Técnica de desenhar fios imperceptíveis na pele que se camuflam aos naturais trazendo naturalidade além de uma sobrancelha preenchida, sem falhas e com um design naturalmente único.',
-    image: '/servicos/Nano/nano-brows.jpg',
+    image: '/servicos/Nano/nano-browns.jpg',
     benefits: [
       'Fios imperceptíveis',
       'Visual totalmente natural',
@@ -399,7 +399,7 @@ export const SERVICES: Service[] = [
     fullDescription:
       'Técnica que levanta e curva os fios naturais dos cílios, deixando o olhar mais aberto. Durabilidade de até 2 meses sem necessidade de manutenção frequente.',
     image: '/servicos/Lash e Brow/lash_lifting.jpg',
-    benefits: ['Curvatura ideal', 'Volume natural', 'Olhar marcante', 'Disensa curvex'],
+    benefits: ['Curvatura ideal', 'Volume natural', 'Olhar marcante', 'Dispensa curvex'],
     duration: '1h 15min',
     category: 'Lash & Brow',
   },
@@ -540,4 +540,21 @@ export const handleWhatsAppClick = (serviceName?: string) => {
 
 export const handleScheduleClick = () => {
   window.open('https://rossisoares.belasis.app/scheduling', '_blank');
+};
+
+export const TEXTS = {
+  privacyIntro: 'Nossa política de privacidade.',
+  privacyItems: [
+    { title: '1. Coleta de Dados', text: 'Coletamos informações pessoais que você nos fornece diretamente, como nome, e-mail e telefone quando entra em contato conosco ou agenda um serviço.' },
+    { title: '2. Uso de Informações', text: 'Utilizamos suas informações para fornecer, operar e melhorar nossos serviços, além de nos comunicarmos com você para confirmar agendamentos e enviar atualizações.' },
+    { title: '3. Compartilhamento', text: 'Não vendemos nem compartilhamos suas informações pessoais com terceiros não afiliados, exceto quando necessário para fornecer o serviço solicitado (por exemplo, provedores de agendamento).' },
+    { title: '4. Segurança', text: 'Adotamos medidas de segurança razoáveis para proteger suas informações pessoais contra perda, roubo e uso não autorizado, divulgação ou modificação.' },
+  ],
+  termsIntro: 'Estes Termos de Serviço regem o uso do nosso site e serviços. Ao utilizar nossos serviços, você concorda com estes termos.',
+  termsItems: [
+    { title: '1. Agendamentos e Cancelamentos', text: 'Solicitamos que os cancelamentos ou reagendamentos sejam feitos com pelo menos 24 horas de antecedência. Cancelamentos tardios poderão estar sujeitos a taxas.' },
+    { title: '2. Responsabilidade do Cliente', text: 'Ao agendar um tratamento, o cliente deve fornecer informações precisas sobre sua saúde, alergias e condições médicas para garantir a segurança dos procedimentos.' },
+    { title: '3. Modificações dos Serviços', text: 'Reservamo-nos o direito de modificar ou descontinuar os serviços anunciados a qualquer momento, sem aviso prévio. Os preços estão sujeitos a alterações.' },
+    { title: '4. Propriedade Intelectual', text: 'Todo o conteúdo deste site (textos, imagens, logo) é propriedade exclusiva da nossa clínica e não pode ser reproduzido sem autorização.' },
+  ],
 };
