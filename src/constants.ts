@@ -33,7 +33,7 @@ export const CLINIC_INFO = {
   description:
     'Descubra uma experiência de cuidado e bem-estar em um espaço pensado para você. Nosso propósito é valorizar a beleza natural com excelência, técnica e atenção genuína em cada atendimento com tratamentos personalizados.',
   experienceYears: '14',
-  address: 'CLN 309 Bloco A Loja 113 - Asa Norte, Brasília - DF',
+  address: 'CLN 309 Bloco D Sala 114 - Asa Norte, Brasília - DF',
   phone: '(61) 99285-8523',
   whatsapp: '5561992858523',
   openingHours: [
