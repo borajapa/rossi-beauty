@@ -393,7 +393,7 @@ const Testimonials = () => {
     if (scrollRef.current) {
       const { scrollLeft, scrollWidth, clientWidth } = scrollRef.current;
       const maxScroll = scrollWidth - clientWidth;
-      
+
       if (maxScroll <= 0) {
         setActiveIndex(0);
       } else {
@@ -533,9 +533,7 @@ const Testimonials = () => {
                 onClick={() => scrollToDot(index)}
                 aria-label={`Ir para página ${index + 1}`}
                 className={`h-2.5 rounded-full transition-all duration-300 ${
-                  activeIndex === index
-                    ? 'bg-white w-8'
-                    : 'bg-white/30 hover:bg-white/50 w-2.5'
+                  activeIndex === index ? 'bg-white w-8' : 'bg-white/30 hover:bg-white/50 w-2.5'
                 }`}
               />
             ))}
@@ -546,7 +544,13 @@ const Testimonials = () => {
   );
 };
 
-const Footer = ({ onOpenPrivacy, onOpenTerms }: { onOpenPrivacy: () => void; onOpenTerms: () => void }) => {
+const Footer = ({
+  onOpenPrivacy,
+  onOpenTerms,
+}: {
+  onOpenPrivacy: () => void;
+  onOpenTerms: () => void;
+}) => {
   return (
     <footer id="contact" className="bg-white border-t border-primary/10 pt-20 pb-10 px-6 lg:px-12">
       <div className="max-w-7xl mx-auto">
@@ -648,10 +652,22 @@ const Footer = ({ onOpenPrivacy, onOpenTerms }: { onOpenPrivacy: () => void; onO
         <div className="border-t border-primary/10 pt-10 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-slate-500">
           <p>© 2026 {CLINIC_INFO.name}. Todos os direitos reservados.</p>
           <div className="flex gap-8">
-            <button onClick={(e) => { e.preventDefault(); onOpenPrivacy(); }} className="hover:text-primary text-left">
+            <button
+              onClick={(e) => {
+                e.preventDefault();
+                onOpenPrivacy();
+              }}
+              className="hover:text-primary text-left"
+            >
               Política de Privacidade
             </button>
-            <button onClick={(e) => { e.preventDefault(); onOpenTerms(); }} className="hover:text-primary text-left">
+            <button
+              onClick={(e) => {
+                e.preventDefault();
+                onOpenTerms();
+              }}
+              className="hover:text-primary text-left"
+            >
               Termos de Serviço
             </button>
           </div>
@@ -832,7 +848,17 @@ const ServiceDetail = ({
   );
 };
 
-const Modal = ({ isOpen, onClose, title, children }: { isOpen: boolean; onClose: () => void; title: string; children: React.ReactNode }) => {
+const Modal = ({
+  isOpen,
+  onClose,
+  title,
+  children,
+}: {
+  isOpen: boolean;
+  onClose: () => void;
+  title: string;
+  children: React.ReactNode;
+}) => {
   if (!isOpen) return null;
   return (
     <AnimatePresence>
@@ -852,7 +878,10 @@ const Modal = ({ isOpen, onClose, title, children }: { isOpen: boolean; onClose:
         >
           <div className="flex items-center justify-between p-6 border-b border-slate-100">
             <h3 className="text-xl font-bold text-slate-900">{title}</h3>
-            <button onClick={onClose} className="p-2 text-slate-400 hover:bg-slate-100 hover:text-slate-600 rounded-full transition-colors">
+            <button
+              onClick={onClose}
+              className="p-2 text-slate-400 hover:bg-slate-100 hover:text-slate-600 rounded-full transition-colors"
+            >
               <X className="w-5 h-5" />
             </button>
           </div>
@@ -860,7 +889,10 @@ const Modal = ({ isOpen, onClose, title, children }: { isOpen: boolean; onClose:
             {children}
           </div>
           <div className="p-6 border-t border-slate-100 bg-slate-50 flex justify-end">
-            <button onClick={onClose} className="bg-primary text-white px-6 py-2.5 rounded-xl font-bold shadow-md hover:bg-primary/90 transition-colors">
+            <button
+              onClick={onClose}
+              className="bg-primary text-white px-6 py-2.5 rounded-xl font-bold shadow-md hover:bg-primary/90 transition-colors"
+            >
               Entendi
             </button>
           </div>
@@ -899,8 +931,9 @@ const CookieConsent = () => {
       >
         <div className="w-full bg-[#9c8383] text-white p-4 sm:p-6 flex flex-col sm:flex-row items-center justify-center gap-6">
           <div className="w-full max-w-4xl text-sm sm:text-base text-white/90 text-center sm:text-left">
-            Usamos cookies para melhorar sua experiência em nosso site, personalizar conteúdo e analisar nosso tráfego. 
-            Ao continuar navegando, você concorda com a nossa <strong className="text-white">Política de Privacidade</strong>.
+            Usamos cookies para melhorar sua experiência em nosso site, personalizar conteúdo e
+            analisar nosso tráfego. Ao continuar navegando, você concorda com a nossa{' '}
+            <strong className="text-white">Política de Privacidade</strong>.
           </div>
           <div className="flex-shrink-0 w-full sm:w-auto mt-2 sm:mt-0">
             <button
@@ -975,7 +1008,10 @@ export default function App() {
           )}
         </AnimatePresence>
       </main>
-      <Footer onOpenPrivacy={() => setIsPrivacyOpen(true)} onOpenTerms={() => setIsTermsOpen(true)} />
+      <Footer
+        onOpenPrivacy={() => setIsPrivacyOpen(true)}
+        onOpenTerms={() => setIsTermsOpen(true)}
+      />
 
       {/* Floating WhatsApp Button */}
       <motion.button
@@ -990,7 +1026,11 @@ export default function App() {
       </motion.button>
 
       {/* Modals */}
-      <Modal isOpen={isPrivacyOpen} onClose={() => setIsPrivacyOpen(false)} title="Política de Privacidade">
+      <Modal
+        isOpen={isPrivacyOpen}
+        onClose={() => setIsPrivacyOpen(false)}
+        title="Política de Privacidade"
+      >
         <div className="space-y-4">
           <p>{TEXTS.privacyIntro}</p>
           {TEXTS.privacyItems.map((item, index) => (
