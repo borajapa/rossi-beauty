@@ -902,13 +902,34 @@ const Modal = ({
   );
 };
 
+// GA4 global type declaration
+declare global {
+  interface Window {
+    gtag: (...args: unknown[]) => void;
+    dataLayer: unknown[];
+  }
+}
+
+// Helper to activate GA4 after consent
+function grantAnalyticsConsent() {
+  if (typeof window.gtag === 'function') {
+    window.gtag('consent', 'update', {
+      analytics_storage: 'granted',
+    });
+    window.gtag('event', 'page_view');
+  }
+}
+
 const CookieConsent = () => {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
     const hasConsented = localStorage.getItem('cookie_consent');
-    if (!hasConsented) {
-      // Small delay to not show instantly on load
+    if (hasConsented) {
+      // User already accepted previously — activate analytics silently
+      grantAnalyticsConsent();
+    } else {
+      // Show banner after small delay
       const timer = setTimeout(() => setIsVisible(true), 1500);
       return () => clearTimeout(timer);
     }
@@ -916,6 +937,7 @@ const CookieConsent = () => {
 
   const handleAccept = () => {
     localStorage.setItem('cookie_consent', 'true');
+    grantAnalyticsConsent();
     setIsVisible(false);
   };
 
