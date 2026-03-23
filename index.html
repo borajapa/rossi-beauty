@@ -4,7 +4,26 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Rossi Soares Beauty</title>
-    <script type="module" crossorigin src="/assets/index-BAuqBDGY.js"></script>
+
+    <!-- Google Analytics 4 (GA4) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-9GRRMKVJMT"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+
+      // Consent Mode v2: começa com analytics negado por padrão
+      gtag('consent', 'default', {
+        analytics_storage: 'denied',
+        ad_storage: 'denied',
+        wait_for_update: 500,
+      });
+
+      gtag('js', new Date());
+      gtag('config', 'G-9GRRMKVJMT', { send_page_view: false });
+    </script>
+    <script type="module" crossorigin src="/assets/index-DcTBlm5t.js"></script>
     <link rel="stylesheet" crossorigin href="/assets/index-B8q4tH7T.css">
   </head>
 
