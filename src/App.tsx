@@ -95,13 +95,25 @@ const Navbar = ({
 
         <nav className="hidden md:flex items-center gap-10">
           {navLinks.map((link) => (
-            <button
-              key={link.id}
-              onClick={() => handleLinkClick(link.id)}
-              className="text-sm font-semibold text-slate-700 hover:text-primary transition-colors"
-            >
-              {link.name}
-            </button>
+            <div key={link.id} className="flex items-center gap-10">
+              <button
+                onClick={() => handleLinkClick(link.id)}
+                className="text-sm font-semibold text-slate-700 hover:text-primary transition-colors"
+              >
+                {link.name}
+              </button>
+              {link.id === 'contact' && (
+                <a
+                  href="https://www.instagram.com/rossi.soares_beauty/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-8 h-8 flex font-semibold text-slate-700 items-center justify-center hover:text-primary transition-colors"
+                  aria-label="Instagram"
+                >
+                  <Instagram className="w-5 h-5" />
+                </a>
+              )}
+            </div>
           ))}
         </nav>
 
@@ -132,13 +144,25 @@ const Navbar = ({
           >
             <nav className="flex flex-col gap-4">
               {navLinks.map((link) => (
-                <button
-                  key={link.id}
-                  onClick={() => handleLinkClick(link.id)}
-                  className="text-lg font-semibold text-slate-700 text-left"
-                >
-                  {link.name}
-                </button>
+                <React.Fragment key={link.id}>
+                  <button
+                    onClick={() => handleLinkClick(link.id)}
+                    className="text-lg font-semibold text-slate-700 text-left"
+                  >
+                    {link.name}
+                  </button>
+                  {link.id === 'contact' && (
+                    <a
+                      href="https://www.instagram.com/rossi.soares_beauty/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-3 text-lg font-semibold text-slate-700 hover:text-primary transition-colors"
+                      aria-label="Instagram"
+                    >
+                      <Instagram className="w-6 h-6" />
+                    </a>
+                  )}
+                </React.Fragment>
               ))}
               <button
                 onClick={() => handleScheduleClick()}
