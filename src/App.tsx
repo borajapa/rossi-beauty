@@ -107,10 +107,10 @@ const Navbar = ({
                   href="https://www.instagram.com/rossi.soares_beauty/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-8 h-8 flex font-semibold text-slate-700 items-center justify-center hover:text-primary transition-colors"
+                  className="text-sm font-semibold text-slate-700 hover:text-primary transition-colors"
                   aria-label="Instagram"
                 >
-                  <Instagram className="w-5 h-5" />
+                  Instagram
                 </a>
               )}
             </div>
@@ -156,10 +156,10 @@ const Navbar = ({
                       href="https://www.instagram.com/rossi.soares_beauty/"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center gap-3 text-lg font-semibold text-slate-700 hover:text-primary transition-colors"
+                      className="text-lg font-semibold text-slate-700 hover:text-primary transition-colors text-left"
                       aria-label="Instagram"
                     >
-                      <Instagram className="w-6 h-6" />
+                      Instagram
                     </a>
                   )}
                 </React.Fragment>
