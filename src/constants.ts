@@ -547,20 +547,40 @@ export const TEXTS = {
   privacyItems: [
     {
       title: '1. Coleta de Dados',
-      text: 'Coletamos informações pessoais que você nos fornece diretamente, como nome, e-mail e telefone quando entra em contato conosco ou agenda um serviço.',
+      text: 'Coletamos informações que você nos fornece diretamente (por exemplo: nome, e‑mail e número de telefone) quando agenda um serviço ou entra em contato. Quando você se comunica conosco via WhatsApp, também podemos coletar o conteúdo das mensagens, carimbos de data/hora, metadados de comunicação e informações técnicas necessárias para prestar o serviço.'
     },
     {
       title: '2. Uso de Informações',
-      text: 'Utilizamos suas informações para fornecer, operar e melhorar nossos serviços, além de nos comunicarmos com você para confirmar agendamentos e enviar atualizações.',
+      text: 'Usamos suas informações para prestar e melhorar nossos serviços, confirmar agendamentos, enviar lembretes, responder dúvidas e fornecer suporte. Podemos ainda utilizar o WhatsApp para comunicações operacionais; comunicações promocionais só serão enviadas mediante seu consentimento explícito.'
     },
     {
       title: '3. Compartilhamento',
-      text: 'Não vendemos nem compartilhamos suas informações pessoais com terceiros não afiliados, exceto quando necessário para fornecer o serviço solicitado (por exemplo, provedores de agendamento).',
+      text: 'Não vendemos seus dados pessoais. Podemos compartilhar informações com prestadores de serviços que nos auxiliam (ex.: sistemas de agendamento, provedores de pagamento, plataformas de envio de mensagens) e quando exigido por lei. Ao usar o WhatsApp, alguns dados podem ser processados pela Meta (empresa responsável pelo WhatsApp) conforme os termos e políticas da plataforma.'
     },
     {
       title: '4. Segurança',
-      text: 'Adotamos medidas de segurança razoáveis para proteger suas informações pessoais contra perda, roubo e uso não autorizado, divulgação ou modificação.',
+      text: 'Adotamos medidas técnicas e organizacionais razoáveis para proteger seus dados contra acesso não autorizado, perda ou alteração. Mensagens trocadas via WhatsApp contam com mecanismos de segurança da própria plataforma; entretanto, ressalvamos que backups, logs ou integrações de terceiros podem ter tratamentos diferentes de segurança.'
     },
+    {
+      title: '5. Comunicação via WhatsApp Business',
+      text: 'Utilizamos o WhatsApp Business para enviar confirmações de agendamento, lembretes, atualizações sobre serviços e comunicações necessárias ao atendimento. Ao fornecer seu número, você concorda em receber mensagens por essa via; você pode optar por não receber mais mensagens a qualquer momento, seguindo as instruções para cancelar ou entrando em contato conosco.'
+    },
+    {
+      title: '6. Conformidade com as políticas do WhatsApp',
+      text: 'Nossas práticas de uso do WhatsApp Business estão alinhadas com os Termos de Serviço e as políticas da plataforma. Isso inclui o uso responsável de templates, respeito ao consentimento do usuário e o processamento de dados conforme as diretrizes da Meta.'
+    },
+    {
+      title: '7. Direitos do usuário',
+      text: 'Você tem direito de acessar, corrigir, limitar ou solicitar a exclusão dos seus dados pessoais. Também pode revogar o consentimento para comunicações via WhatsApp a qualquer momento. Para exercer seus direitos, entre em contato conosco pelo telefone, WhatsApp ou e‑mail informados no site.'
+    },
+    {
+      title: '8. Retenção de Dados',
+      text: 'Reteremos seus dados apenas pelo tempo necessário para cumprir as finalidades descritas, atender obrigações legais ou resolver possíveis disputas. Quando não forem mais necessários, adotaremos medidas para sua exclusão ou anonimização.'
+    },
+    {
+      title: '9. Atualizações desta política',
+      text: 'Podemos atualizar esta política de privacidade periodicamente. Avisaremos sobre mudanças materiais por meio do site ou por mensagem direta, quando aplicável, e indicaremos a data da última atualização.'
+    }
   ],
   termsIntro:
     'Estes Termos de Serviço regem o uso do nosso site e serviços. Ao utilizar nossos serviços, você concorda com estes termos.',
