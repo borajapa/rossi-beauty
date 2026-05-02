@@ -122,7 +122,7 @@ const Navbar = ({
             onClick={() => handleScheduleClick()}
             className="hidden sm:block bg-primary hover:translate-y-[-2px] text-white px-6 py-2.5 rounded-xl text-sm font-bold shadow-xl shadow-primary/25 transition-all"
           >
-            Agendar horário 
+            Agendar horário
           </button>
           <button
             className="md:hidden text-slate-900"
