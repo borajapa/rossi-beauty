@@ -10,7 +10,7 @@ Site institucional da **Rossi Soares Beauty** — clínica de estética localiza
 
 - **Hero section** com chamada para agendamento
 - **Carrossel de serviços** com navegação por setas
-- **Página de todos os serviços** organizada por categorias (Natural Brows, Estética Facial, Lash & Brow, Depilação, Massagem, Nanopigmentação e outros)
+- **Página de todos os serviços** organizada por categorias (Natural Brows, Estética Facial, Lash & Brow, Depilação, Nanopigmentação e outros)
 - **Página de detalhe** de cada serviço com benefícios e botão de agendamento
 - **Depoimentos** de clientes em carrossel, com link para avaliações no Google
 - **Seção Sobre** com filosofia do estúdio

@@ -23,7 +23,6 @@ export const SERVICE_CATEGORIES = [
   'Estética Facial',
   'Lash & Brow',
   'Depilação',
-  'Massagem',
 ];
 
 export const CLINIC_INFO = {
@@ -440,29 +439,6 @@ export const SERVICES: Service[] = [
     benefits: ['Não agride a pele', 'Remove pelos finos', 'Não mancha', 'Estimula a circulação'],
     duration: '45 min',
     category: 'Depilação',
-  },
-  {
-    id: 'massagem',
-    title: 'Massagem',
-    shortDescription: 'Diversos tipos de massagens focadas no seu bem-estar.',
-    fullDescription: 'Escolha a massagem ideal para o seu momento:',
-    topics: [
-      'Relaxante - ideal para desacelerar e renovar as energias.',
-      'Drenagem Linfática - para aliviar inchaços e sensação de peso.',
-      'Modeladora - para quem deseja focar no contorno corporal.',
-      'Bambuterapia - relaxamento profundo com efeitos modeladores.',
-      'Liberação Miofascial - ideal para pontos de dor e rigidez.',
-      'Candle Massage - hidratação intensa com óleo aromático das velas.',
-    ],
-    image: '/servicos/Massagem/massagem_relaxante.jpg',
-    benefits: [
-      'Relaxamento profundo',
-      'Alívio de dores',
-      'Melhora da circulação',
-      'Renovação de energias',
-    ],
-    duration: '50 min',
-    category: 'Massagem',
   },
 ];
 
