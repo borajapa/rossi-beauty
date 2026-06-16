@@ -515,7 +515,7 @@ export const handleWhatsAppClick = (serviceName?: string) => {
 };
 
 export const handleScheduleClick = () => {
-  window.open('https://rossisoares.belasis.app/scheduling', '_blank');
+  window.open('https://rossisoares.belasis.app', '_blank');
 };
 
 export const TEXTS = {
