@@ -117,8 +117,6 @@ const Hero = () => (
         Naturalmente
         <br />
         <span>única.</span>
-        <br />
-        Essencialmente você.
       </h1>
       <p className="hero-description">
         Um olhar atento à sua beleza. Um cuidado que respeita a sua essência. Aqui, cada detalhe é

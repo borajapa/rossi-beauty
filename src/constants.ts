@@ -168,38 +168,6 @@ export const SERVICES: Service[] = [
     category: 'Natural Brows',
   },
   {
-    id: 'tintura-sobrancelha',
-    title: 'Tintura de Sobrancelha',
-    shortDescription: 'Aplicação de tinta nas sobrancelhas para maior destaque.',
-    fullDescription:
-      'Aplicação de tinta específica para sobrancelhas. Promove coloração dos fios brancos ou claros, dando mais destaque e sensação de volume.',
-    image: '/servicos/Natutal Brows/tintura-de-sobrancelha.jpg',
-    benefits: [
-      'Cobertura de fios brancos',
-      'Destaque do olhar',
-      'Efeito natural',
-      'Praticidade diária',
-    ],
-    duration: '20 min',
-    category: 'Natural Brows',
-  },
-  {
-    id: 'tintura-cilios',
-    title: 'Tintura dos Cílios',
-    shortDescription: 'Coloração dos cílios para um efeito alongado.',
-    fullDescription:
-      'Pintar os cílios com coloração específica para a área dos olhos, realçando o olhar e dispensando o uso de rímel no dia a dia.',
-    image: '/servicos/Natutal Brows/tintura-cilios.jpg',
-    benefits: [
-      'Efeito rímel prolongado',
-      'Realce do olhar',
-      'Procedimento seguro e rápido',
-      'Praticidade',
-    ],
-    duration: '30 min',
-    category: 'Natural Brows',
-  },
-  {
     id: 'despigmentacao',
     title: 'Despigmentação',
     shortDescription: 'Método de remoção de micropigmentação e tatuagem.',
