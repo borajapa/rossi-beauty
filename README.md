@@ -57,7 +57,6 @@ Acesse em `http://localhost:3000`.
 | `npm run preview` | Preview do build de produção         |
 | `npm run lint`    | Verifica erros de ESLint             |
 | `npm run format`  | Formata o código com Prettier        |
-| `npm run deploy`  | Publica no GitHub Pages              |
 
 ---
 
@@ -114,13 +113,21 @@ Ambos podem ser alterados em `src/constants.ts`.
 
 ## 🚢 Deploy
 
-O projeto está configurado para deploy automático no **GitHub Pages** via `gh-pages`.
+O site é hospedado no **Cloudflare Workers**, no projeto `rossi-beauty`, conectado a este repositório no GitHub.
+
+- **Branch de produção:** `main`.
+- **Build:** `npm run build`, com saída em `dist/`.
+- **Publicação:** cada push na `main` dispara o build e o deploy pela integração Git da Cloudflare.
+- **Domínio:** `rossisoares.com`, associado ao Worker no painel da Cloudflare.
+
+As configurações de build, deploy e domínios são administradas no painel da Cloudflare. Não há script local de publicação neste repositório. Para acompanhar uma atualização, consulte as implantações do Worker `rossi-beauty`.
+
+Para validar o site localmente antes de enviar alterações:
 
 ```bash
-npm run deploy
+npm run build
+npm run preview
 ```
-
-O domínio customizado `rossisoares.com` está configurado no arquivo `CNAME`.
 
 ---
 
