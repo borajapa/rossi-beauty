@@ -171,6 +171,7 @@ const Services = ({
   onViewAll: () => void;
 }) => {
   const [category, setCategory] = useState('Seleção de cuidados');
+  const categoriesRef = useRef<HTMLDivElement>(null);
   const featured = ['nano-brows', 'face-spa', 'lash-lifting'];
   const visible =
     category === 'Seleção de cuidados'
@@ -197,9 +198,35 @@ const Services = ({
             Descubra o cuidado que combina com o seu momento.
           </p>
         </div>
-        <div className="category-tabs" aria-label="Filtrar tratamentos">
+        <div className="category-scroll-controls">
+          <span>Deslize para ver todas as categorias</span>
+          <button
+            aria-label="Categorias anteriores"
+            onClick={() => categoriesRef.current?.scrollBy({ left: -240, behavior: 'smooth' })}
+          >
+            <ArrowLeft size={18} />
+          </button>
+          <button
+            aria-label="Próximas categorias"
+            onClick={() => categoriesRef.current?.scrollBy({ left: 240, behavior: 'smooth' })}
+          >
+            <ArrowRight size={18} />
+          </button>
+        </div>
+        <div ref={categoriesRef} className="category-tabs" aria-label="Filtrar tratamentos">
           {['Seleção de cuidados', ...SERVICE_CATEGORIES].map((item) => (
-            <button key={item} aria-pressed={category === item} onClick={() => setCategory(item)}>
+            <button
+              key={item}
+              aria-pressed={category === item}
+              onClick={(event) => {
+                setCategory(item);
+                event.currentTarget.scrollIntoView({
+                  behavior: 'smooth',
+                  block: 'nearest',
+                  inline: 'nearest',
+                });
+              }}
+            >
               {item}
             </button>
           ))}

@@ -419,17 +419,6 @@ export const SERVICES: Service[] = [
     category: 'Depilação',
   },
   {
-    id: 'epilacao-barba',
-    title: 'Epilação de Barba',
-    shortDescription: 'Epilação da barba com cera.',
-    fullDescription:
-      'Epilação da barba com cera, ideal para quem busca maior durabilidade e um contorno limpo e bem definido para a barba.',
-    image: '/servicos/Depilacao/epilacao_de_barba.jpg',
-    benefits: ['Maior durabilidade', 'Pele mais macia', 'Contorno definido', 'Reduz crescimento'],
-    duration: '30 min',
-    category: 'Depilação',
-  },
-  {
     id: 'epilacao-facial',
     title: 'Epilação Facial',
     shortDescription: 'Epilação Facial com linha.',

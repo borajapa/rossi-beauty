@@ -291,11 +291,23 @@ h2 {
 .category-tabs {
   display: flex;
   gap: 25px;
-  overflow: auto;
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  overscroll-behavior-x: contain;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+  scrollbar-color: #a49689 #e9e1d8;
   border-bottom: 1px solid #51464025;
   margin: 32px 0;
 }
+.category-scroll-controls {
+  display: none;
+}
 .category-tabs button {
+  white-space: nowrap;
   flex-shrink: 0;
   font-size: 13px;
   padding: 14px 0;
@@ -553,5 +565,31 @@ footer {
     animation-duration: 0.01ms !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
+  }
+}
+
+@media (max-width: 767px) {
+  .category-scroll-controls {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 24px;
+  }
+  .category-scroll-controls span {
+    flex: 1;
+    font-size: 12px;
+    color: #76685e;
+  }
+  .category-scroll-controls button {
+    display: grid;
+    place-items: center;
+    width: 40px;
+    height: 40px;
+    border: 1px solid #a49689;
+    border-radius: 50%;
+  }
+  .category-tabs {
+    margin-top: 8px;
+    padding-bottom: 8px;
   }
 }
