@@ -8,7 +8,6 @@ import {
   ArrowRight,
   ShieldCheck,
   HeartHandshake,
-  FlaskConical,
   Star,
   MapPin,
   Phone,
@@ -41,202 +40,126 @@ const Navbar = ({
   onNavigate: (page: string) => void;
   currentPage: string;
 }) => {
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  const navLinks = [
-    { name: 'Início', id: 'home' },
-    { name: 'Serviços', id: 'services' },
-    { name: 'Sobre Nós', id: 'about' },
-    { name: 'Depoimentos', id: 'testimonials' },
-    { name: 'Contato', id: 'contact' },
-  ];
-
-  const handleLinkClick = (id: string) => {
-    setIsMobileMenuOpen(false);
-    if (currentPage !== 'home') {
-      onNavigate('home');
-      // Small delay to allow home page to render before scrolling
-      setTimeout(() => {
-        const element = document.getElementById(id);
-        if (element) element.scrollIntoView({ behavior: 'smooth' });
-      }, 100);
-    } else {
-      const element = document.getElementById(id);
-      if (element) element.scrollIntoView({ behavior: 'smooth' });
-    }
+  const [open, setOpen] = useState(false);
+  const navigate = (id: string) => {
+    setOpen(false);
+    if (currentPage !== 'home') onNavigate('home');
+    window.setTimeout(
+      () => document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' }),
+      currentPage === 'home' ? 0 : 350
+    );
   };
-
   return (
-    <header
-      className={`fixed top-0 z-50 w-full transition-all duration-300 ${
-        isScrolled || currentPage !== 'home'
-          ? 'bg-white/80 backdrop-blur-md border-b border-primary/10 py-4'
-          : 'bg-transparent py-6'
-      }`}
-    >
-      <div className="max-w-7xl mx-auto px-6 lg:px-12 flex items-center justify-between">
-        <div className="flex items-center gap-3 cursor-pointer" onClick={() => onNavigate('home')}>
-          <img
-            src={CLINIC_INFO.logo}
-            alt="Logo"
-            className="w-10 h-10 rounded-full object-cover shadow-sm"
-          />
-          <h2 className="text-xl font-bold tracking-tight text-slate-900">{CLINIC_INFO.name}</h2>
-        </div>
-
-        <nav className="hidden md:flex items-center gap-10">
-          {navLinks.map((link) => (
-            <div key={link.id} className="flex items-center gap-10">
-              <button
-                onClick={() => handleLinkClick(link.id)}
-                className="text-sm font-semibold text-slate-700 hover:text-primary transition-colors"
-              >
-                {link.name}
-              </button>
-              {link.id === 'contact' && (
-                <a
-                  href="https://www.instagram.com/rossi.soares_beauty/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-sm font-semibold text-slate-700 hover:text-primary transition-colors"
-                  aria-label="Instagram"
-                >
-                  Instagram
-                </a>
-              )}
-            </div>
+    <header className="brand-header">
+      <a className="skip-link" href="#main-content">
+        Pular para o conteúdo
+      </a>
+      <div className="header-inner">
+        <button
+          className="brand-logo"
+          onClick={() => navigate('home')}
+          aria-label="Rossi Soares, início"
+        >
+          <img src="/brand/svg/rossi-soares-horizontal-compacta-marrom.svg" alt="Rossi Soares" />
+        </button>
+        <nav
+          className={open ? 'main-nav is-open' : 'main-nav'}
+          id="main-navigation"
+          aria-label="Navegação principal"
+        >
+          {[
+            ['services', 'Tratamentos'],
+            ['about', 'A clínica'],
+            ['testimonials', 'Experiências'],
+            ['contact', 'Contato'],
+          ].map(([id, label]) => (
+            <button key={id} onClick={() => navigate(id)}>
+              {label}
+            </button>
           ))}
+          <button
+            className="mobile-schedule"
+            onClick={() => {
+              setOpen(false);
+              handleScheduleClick();
+            }}
+          >
+            Agendar meu cuidado <ArrowRight size={16} />
+          </button>
         </nav>
-
-        <div className="flex items-center gap-4">
-          <button
-            onClick={() => handleScheduleClick()}
-            className="hidden sm:block bg-primary hover:translate-y-[-2px] text-white px-6 py-2.5 rounded-xl text-sm font-bold shadow-xl shadow-primary/25 transition-all"
-          >
-            Agendar horário
-          </button>
-          <button
-            className="md:hidden text-slate-900"
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          >
-            {isMobileMenuOpen ? <X /> : <Menu />}
-          </button>
-        </div>
+        <button
+          className="button button-dark header-schedule"
+          onClick={() => handleScheduleClick()}
+        >
+          Agendar horário <ArrowRight size={16} />
+        </button>
+        <button
+          className="menu-toggle"
+          aria-label={open ? 'Fechar menu' : 'Abrir menu'}
+          aria-expanded={open}
+          aria-controls="main-navigation"
+          onClick={() => setOpen(!open)}
+        >
+          {open ? <X /> : <Menu />}
+        </button>
       </div>
-
-      {/* Mobile Menu */}
-      <AnimatePresence>
-        {isMobileMenuOpen && (
-          <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            className="absolute top-full left-0 w-full bg-white border-b border-primary/10 p-6 md:hidden"
-          >
-            <nav className="flex flex-col gap-4">
-              {navLinks.map((link) => (
-                <React.Fragment key={link.id}>
-                  <button
-                    onClick={() => handleLinkClick(link.id)}
-                    className="text-lg font-semibold text-slate-700 text-left"
-                  >
-                    {link.name}
-                  </button>
-                  {link.id === 'contact' && (
-                    <a
-                      href="https://www.instagram.com/rossi.soares_beauty/"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-lg font-semibold text-slate-700 hover:text-primary transition-colors text-left"
-                      aria-label="Instagram"
-                    >
-                      Instagram
-                    </a>
-                  )}
-                </React.Fragment>
-              ))}
-              <button
-                onClick={() => handleScheduleClick()}
-                className="w-full bg-primary text-white py-4 rounded-xl font-bold text-lg shadow-xl shadow-primary/25 hover:translate-y-[-2px] transition-all"
-              >
-                Agendar horário
-              </button>
-            </nav>
-          </motion.div>
-        )}
-      </AnimatePresence>
     </header>
   );
 };
 
-const Hero = () => {
-  return (
-    <section
-      id="home"
-      className="relative pt-32 pb-12 lg:pt-48 lg:pb-24 px-6 lg:px-12 max-w-7xl mx-auto overflow-hidden"
-    >
-      <div className="grid lg:grid-cols-2 gap-12 items-center">
-        <motion.div
-          initial={{ opacity: 0, x: -50 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8 }}
-          className="order-2 lg:order-1 flex flex-col gap-8"
-        >
-          <div className="space-y-4">
-            <h1 className="text-5xl lg:text-7xl font-extrabold leading-[1.1] tracking-tight text-primary">
-              {CLINIC_INFO.tagline}
-            </h1>
-            <p className="text-lg text-slate-600 max-w-lg leading-relaxed">
-              {CLINIC_INFO.description}
-            </p>
-          </div>
-          <div className="flex flex-wrap gap-4">
-            <button
-              onClick={() => handleScheduleClick()}
-              className="bg-primary text-white px-8 py-4 rounded-xl font-bold text-lg shadow-xl shadow-primary/25 hover:translate-y-[-2px] transition-all"
-            >
-              Agendar um Horário
-            </button>
-            <button
-              onClick={() =>
-                document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' })
-              }
-              className="bg-primary/10 text-primary px-8 py-4 rounded-xl font-bold text-lg hover:bg-primary/20 transition-all"
-            >
-              Ver Serviços
-            </button>
-          </div>
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.8 }}
-          className="order-1 lg:order-2"
-        >
-          <div className="aspect-[4/5] lg:aspect-square w-full bg-primary/5 rounded-[2rem] overflow-hidden relative group shadow-2xl">
-            <img
-              src="/index/recepcao.jpg"
-              alt="Interior of a luxury modern spa room"
-              className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-              referrerPolicy="no-referrer"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-white/20 to-transparent"></div>
-          </div>
-        </motion.div>
+const Hero = () => (
+  <section id="home" className="hero-section">
+    <div className="hero-copy">
+      <p className="eyebrow">
+        <span /> ESTÉTICA AVANÇADA · BRASÍLIA
+      </p>
+      <h1>
+        Naturalmente
+        <br />
+        <span>única.</span>
+        <br />
+        Essencialmente você.
+      </h1>
+      <p className="hero-description">
+        Um olhar atento à sua beleza. Um cuidado que respeita a sua essência. Aqui, cada detalhe é
+        pensado para você.
+      </p>
+      <div className="hero-actions">
+        <button className="button button-dark" onClick={() => handleScheduleClick()}>
+          Agendar meu cuidado <ArrowRight size={18} />
+        </button>
+        <a className="text-link" href="#services">
+          Explorar tratamentos <ArrowRight size={16} />
+        </a>
       </div>
-    </section>
-  );
-};
+      <div className="hero-note">
+        <img src="/brand/svg/rossi-soares-simbolo-marrom.svg" alt="" />
+        <p>
+          Beleza com naturalidade.
+          <br />
+          <span>Cuidado com intenção.</span>
+        </p>
+      </div>
+    </div>
+    <div className="hero-visual">
+      <img
+        className="hero-photo"
+        src="/index/recepcao.jpg"
+        alt="Recepção da clínica Rossi Soares, com poltronas e iluminação acolhedora"
+        fetchPriority="high"
+      />
+      <div className="photo-caption">
+        <span>UM TEMPO PARA VOCÊ</span>
+        <span>
+          Asa Norte, Brasília <ArrowRight size={16} />
+        </span>
+      </div>
+      <div className="hero-seal">
+        <img src="/brand/svg/rossi-soares-simbolo-marrom.svg" alt="" />
+      </div>
+    </div>
+  </section>
+);
 
 import { useRef } from 'react';
 
@@ -247,165 +170,108 @@ const Services = ({
   onServiceClick: (service: Service) => void;
   onViewAll: () => void;
 }) => {
-  const scrollRef = useRef<HTMLDivElement>(null);
-
-  const scroll = (direction: 'left' | 'right') => {
-    if (scrollRef.current) {
-      const { current } = scrollRef;
-      const scrollAmount = direction === 'left' ? -current.offsetWidth : current.offsetWidth;
-      current.scrollBy({ left: scrollAmount, behavior: 'smooth' });
-    }
-  };
-
+  const [category, setCategory] = useState('Seleção de cuidados');
+  const featured = ['nano-brows', 'face-spa', 'lash-lifting'];
+  const visible =
+    category === 'Seleção de cuidados'
+      ? featured.flatMap((id) => SERVICES.filter((service) => service.id === id))
+      : SERVICES.filter((service) => service.category === category);
   return (
-    <section id="services" className="bg-primary/5 py-24 px-6 lg:px-12 overflow-hidden">
-      <div className="max-w-7xl mx-auto relative">
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
-          <div className="space-y-4">
-            <h2 className="text-3xl lg:text-4xl font-bold text-slate-900">Nossos Serviços</h2>
-            <div className="h-1 w-20 bg-primary rounded-full"></div>
-            <p className="text-slate-600 max-w-2xl">
-              Tratamentos selecionados para proporcionar resultados visíveis e uma experiência
-              luxuosa.
-            </p>
+    <section id="services" className="treatments-section">
+      <div className="values-strip">
+        <span>Beleza natural</span>
+        <i />
+        <span>Cuidado personalizado</span>
+        <i />
+        <span>Excelência em cada detalhe</span>
+      </div>
+      <div className="section-wrap">
+        <div className="section-heading">
+          <div>
+            <p className="eyebrow">01 / NOSSOS TRATAMENTOS</p>
+            <h2>Seu cuidado, do seu jeito.</h2>
           </div>
-
-          <div className="flex gap-4 hidden sm:flex">
-            <button
-              onClick={() => scroll('left')}
-              className="w-14 h-14 rounded-full bg-white border border-primary/20 flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-all shadow-xl hover:shadow-2xl hover:-translate-y-1 active:translate-y-0"
-              aria-label="Anterior"
-            >
-              <ArrowLeft className="w-6 h-6" />
-            </button>
-            <button
-              onClick={() => scroll('right')}
-              className="w-14 h-14 rounded-full bg-white border border-primary/20 flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-all shadow-xl hover:shadow-2xl hover:-translate-y-1 active:translate-y-0"
-              aria-label="Próximo"
-            >
-              <ArrowRight className="w-6 h-6" />
-            </button>
-          </div>
+          <p>
+            Realçamos o que faz você ser única.
+            <br />
+            Descubra o cuidado que combina com o seu momento.
+          </p>
         </div>
-
-        <div
-          ref={scrollRef}
-          className="flex overflow-x-auto gap-8 pb-8 snap-x snap-mandatory hide-scrollbar -mx-6 px-6 md:mx-0 md:px-0"
-        >
-          {SERVICES.map((service) => (
-            <motion.div
-              key={service.id}
-              onClick={() => onServiceClick(service)}
-              whileHover={{ y: -10 }}
-              className="bg-white p-4 rounded-2xl shadow-sm border border-primary/5 hover:shadow-xl transition-all cursor-pointer group min-w-[280px] sm:min-w-[320px] max-w-[320px] shrink-0 snap-start flex flex-col items-start"
-            >
-              <div className="aspect-square w-full rounded-xl overflow-hidden mb-6">
-                <img
-                  src={service.image}
-                  alt={service.title}
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                  referrerPolicy="no-referrer"
-                />
-              </div>
-              <h3 className="text-xl font-bold mb-2 text-slate-900">{service.title}</h3>
-              <p className="text-slate-600 text-sm leading-relaxed mb-4 flex-grow">
-                {service.shortDescription}
-              </p>
-              <div className="text-primary text-sm font-bold flex items-center gap-1 group-hover:gap-2 transition-all mt-auto">
-                Saiba Mais <ArrowRight className="w-4 h-4" />
-              </div>
-            </motion.div>
+        <div className="category-tabs" aria-label="Filtrar tratamentos">
+          {['Seleção de cuidados', ...SERVICE_CATEGORIES].map((item) => (
+            <button key={item} aria-pressed={category === item} onClick={() => setCategory(item)}>
+              {item}
+            </button>
           ))}
         </div>
-
-        {/* Ver todos button */}
-        <div className="flex justify-center mt-8">
-          <button
-            onClick={onViewAll}
-            className="inline-flex items-center gap-2 bg-primary text-white px-8 py-4 rounded-xl font-bold text-lg shadow-xl shadow-primary/25 hover:translate-y-[-2px] transition-all"
-          >
-            Ver todos os serviços <ArrowRight className="w-4 h-4" />
+        <div className="treatment-grid">
+          {visible.map((service, index) => (
+            <button
+              className="treatment-card"
+              key={service.id}
+              onClick={() => onServiceClick(service)}
+            >
+              <div className="treatment-image">
+                <img src={service.image} alt={service.title} loading="lazy" />
+                <span className="treatment-index">{String(index + 1).padStart(2, '0')}</span>
+                <span className="card-arrow">
+                  <ArrowRight size={21} />
+                </span>
+              </div>
+              <div className="treatment-meta">
+                <span>{service.category}</span>
+                <span>{service.duration}</span>
+              </div>
+              <h3>{service.title}</h3>
+              <p>{service.shortDescription}</p>
+            </button>
+          ))}
+        </div>
+        <div className="all-treatments">
+          <button className="text-link" onClick={onViewAll}>
+            Conhecer todos os tratamentos <ArrowRight size={18} />
           </button>
         </div>
       </div>
     </section>
   );
 };
-const About = () => {
-  return (
-    <section id="about" className="py-24 px-6 lg:px-12 max-w-7xl mx-auto">
-      <div className="grid lg:grid-cols-2 gap-16 items-center">
-        <div className="relative">
-          <div className="w-full aspect-square bg-primary/10 rounded-2xl overflow-hidden shadow-xl">
-            <img
-              src="/index/nos.jpg"
-              alt="Owners"
-              className="w-full h-full object-cover"
-              referrerPolicy="no-referrer"
-            />
-          </div>
-          <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            className="absolute -bottom-8 -right-8 bg-white p-8 rounded-2xl shadow-2xl border border-primary/10 hidden md:block"
-          >
-            <p className="text-4xl font-black text-primary">{CLINIC_INFO.experienceYears}</p>
-            <p className="text-sm font-bold opacity-70 text-slate-900">
-              {CLINIC_INFO.experienceYears} Anos de Experiência
-            </p>
-          </motion.div>
-        </div>
 
-        <div className="space-y-6">
-          <h2 className="text-3xl lg:text-4xl font-bold text-slate-900">Nossa Filosofia</h2>
-          <p className="text-lg leading-relaxed text-slate-700 text-justify">
-            Na {CLINIC_INFO.name}, acreditamos que o verdadeiro cuidado nasce da união entre
-            excelência técnica e respeito. Há mais de uma década, construímos nossa trajetória com
-            base na competência, padronização, pontualidade e rigorosos protocolos de higiene,
-            sempre priorizando a segurança e o bem-estar de clientes e colaboradores.
-          </p>
-          <p className="text-lg leading-relaxed text-slate-700 text-justify">
-            Nosso princípio é simples: dar sempre mais do que recebemos. Por isso, cada atendimento
-            é guiado pela cordialidade, elegância e atenção aos detalhes. Recebemos cada um com
-            respeito e acolhimento, mantendo sempre o padrão de cuidado.
-          </p>
-          <p className="text-lg leading-relaxed text-slate-700 text-justify">
-            Mais do que prestar serviços, buscamos oferecer uma experiência em que cada cliente se
-            sinta bem recebido, em um espaço onde o profissionalismo e a hospitalidade caminham
-            juntos.
-          </p>
-
-          <div className="flex flex-wrap gap-8 pt-4">
-            <div className="flex flex-col items-center gap-2">
-              <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
-                <ShieldCheck className="text-primary w-6 h-6" />
-              </div>
-              <span className="text-[10px] font-bold uppercase tracking-tight text-slate-900">
-                Segurança Primeiro
-              </span>
-            </div>
-            <div className="flex flex-col items-center gap-2 px-6 border-x border-primary/20">
-              <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
-                <HeartHandshake className="text-primary w-6 h-6" />
-              </div>
-              <span className="text-[10px] font-bold uppercase tracking-tight text-slate-900">
-                Atendimento Personalizado
-              </span>
-            </div>
-            <div className="flex flex-col items-center gap-2">
-              <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
-                <FlaskConical className="text-primary w-6 h-6" />
-              </div>
-              <span className="text-[10px] font-bold uppercase tracking-tight text-slate-900">
-                Tecnologia de Ponta
-              </span>
-            </div>
-          </div>
-        </div>
+const About = () => (
+  <section id="about" className="about-section section-wrap">
+    <div className="about-photo">
+      <img src="/index/nos.jpg" alt="Profissionais da Rossi Soares na clínica" loading="lazy" />
+      <span>PROXIMIDADE EM CADA ENCONTRO</span>
+    </div>
+    <div className="about-copy">
+      <p className="eyebrow">02 / NOSSA ESSÊNCIA</p>
+      <h2>
+        Mais que estética.
+        <br />
+        Uma relação de cuidado.
+      </h2>
+      <p>
+        Acreditamos que o verdadeiro cuidado nasce da união entre excelência técnica e respeito à
+        sua individualidade.
+      </p>
+      <p>
+        Há mais de uma década, nossa história é feita de escuta, acolhimento e atenção aos detalhes.
+        Um espaço para se sentir bem, com a liberdade de ser você.
+      </p>
+      <div className="about-values">
+        <span>
+          <ShieldCheck size={20} /> Segurança e confiança
+        </span>
+        <span>
+          <HeartHandshake size={20} /> Atendimento próximo
+        </span>
       </div>
-    </section>
-  );
-};
+      <a href="#contact" className="text-link">
+        Conheça o nosso espaço <ArrowRight size={18} />
+      </a>
+    </div>
+  </section>
+);
 
 const Testimonials = () => {
   const scrollRef = useRef<HTMLDivElement>(null);
@@ -462,7 +328,9 @@ const Testimonials = () => {
         <div className="flex flex-col md:flex-row mb-16 relative">
           {/* Centered Headers */}
           <div className="text-center w-full">
-            <h2 className="text-3xl lg:text-4xl font-bold mb-6">O Que Nossas Clientes Dizem</h2>
+            <h2 className="text-3xl lg:text-4xl font-bold mb-6">
+              Histórias de quem se cuida aqui.
+            </h2>
             <a
               href={CLINIC_INFO.googleReviewsUrl}
               target="_blank"
@@ -582,13 +450,10 @@ const Footer = ({
           <div className="col-span-1 lg:col-span-2 space-y-6">
             <div className="flex items-center gap-3">
               <img
-                src={CLINIC_INFO.logo}
-                alt="Logo"
-                className="w-10 h-10 rounded-full object-cover shadow-sm"
+                src="/brand/svg/rossi-soares-horizontal-compacta-marrom.svg"
+                alt="Rossi Soares"
+                className="footer-logo"
               />
-              <h2 className="text-2xl font-bold tracking-tight text-slate-900">
-                {CLINIC_INFO.name}
-              </h2>
             </div>
             <div className="flex gap-4">
               <a
@@ -660,6 +525,7 @@ const Footer = ({
             <div className="w-full h-32 rounded-xl overflow-hidden shadow-inner border border-slate-100 flex-shrink-0 relative group">
               <div className="absolute inset-0 bg-slate-900/5 group-hover:bg-transparent transition-all z-10 pointer-events-none"></div>
               <iframe
+                title="Localização da clínica Rossi Soares"
                 src={CLINIC_INFO.googleMapsEmbedUrl}
                 width="100%"
                 height="100%"
@@ -975,7 +841,7 @@ const CookieConsent = () => {
         exit={{ y: 100, opacity: 0 }}
         className="fixed bottom-0 left-0 right-0 z-[60] shadow-2xl"
       >
-        <div className="w-full bg-[#9c8383] text-white p-4 sm:p-6 flex flex-col sm:flex-row items-center justify-center gap-6">
+        <div className="w-full bg-primary text-white p-4 sm:p-6 flex flex-col sm:flex-row items-center justify-center gap-6">
           <div className="w-full max-w-4xl text-sm sm:text-base text-white/90 text-center sm:text-left">
             Usamos cookies para melhorar sua experiência em nosso site, personalizar conteúdo e
             analisar nosso tráfego. Ao continuar navegando, você concorda com a nossa{' '}
@@ -984,7 +850,7 @@ const CookieConsent = () => {
           <div className="flex-shrink-0 w-full sm:w-auto mt-2 sm:mt-0">
             <button
               onClick={handleAccept}
-              className="w-full sm:w-auto bg-[#fffafa] text-[#9c8383] px-8 py-3 rounded-xl font-bold shadow-xl hover:bg-white hover:scale-105 active:scale-95 transition-all whitespace-nowrap"
+              className="w-full sm:w-auto bg-background text-primary px-8 py-3 rounded-xl font-bold shadow-xl hover:bg-white hover:scale-105 active:scale-95 transition-all whitespace-nowrap"
             >
               Aceitar Cookies
             </button>
@@ -1023,7 +889,7 @@ export default function App() {
   return (
     <div className="min-h-screen bg-background font-sans selection:bg-primary/30">
       <Navbar onNavigate={setCurrentPage} currentPage={currentPage} />
-      <main>
+      <main id="main-content">
         <AnimatePresence mode="wait">
           {currentPage === 'home' ? (
             <motion.div
@@ -1066,7 +932,8 @@ export default function App() {
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.9 }}
         onClick={() => handleWhatsAppClick()}
-        className="fixed bottom-8 right-8 z-50 bg-[#25D366] text-white p-4 rounded-full shadow-2xl flex items-center justify-center hover:bg-[#128C7E] transition-colors"
+        aria-label="Conversar pelo WhatsApp"
+        className="fixed bottom-8 right-8 z-50 bg-primary text-white p-4 rounded-full shadow-2xl flex items-center justify-center hover:bg-primary/90 transition-colors"
       >
         <FaWhatsapp />
       </motion.button>
