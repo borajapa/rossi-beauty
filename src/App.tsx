@@ -146,12 +146,6 @@ const Hero = () => (
         alt="Recepção da clínica Rossi Soares, com poltronas e iluminação acolhedora"
         fetchPriority="high"
       />
-      <div className="photo-caption">
-        <span>UM TEMPO PARA VOCÊ</span>
-        <span>
-          Asa Norte, Brasília <ArrowRight size={16} />
-        </span>
-      </div>
       <div className="hero-seal">
         <img src="/brand/svg/rossi-soares-simbolo-marrom.svg" alt="" />
       </div>
@@ -187,7 +181,7 @@ const Services = ({
       <div className="section-wrap">
         <div className="section-heading">
           <div>
-            <p className="eyebrow">01 / NOSSOS TRATAMENTOS</p>
+            <p className="eyebrow">NOSSOS TRATAMENTOS</p>
             <h2>Seu cuidado, do seu jeito.</h2>
           </div>
           <p>
@@ -230,7 +224,7 @@ const Services = ({
           ))}
         </div>
         <div className="treatment-grid">
-          {visible.map((service, index) => (
+          {visible.map((service) => (
             <button
               className="treatment-card"
               key={service.id}
@@ -238,7 +232,6 @@ const Services = ({
             >
               <div className="treatment-image">
                 <img src={service.image} alt={service.title} loading="lazy" />
-                <span className="treatment-index">{String(index + 1).padStart(2, '0')}</span>
                 <span className="card-arrow">
                   <ArrowRight size={21} />
                 </span>
@@ -269,7 +262,7 @@ const About = () => (
       <span>PROXIMIDADE EM CADA ENCONTRO</span>
     </div>
     <div className="about-copy">
-      <p className="eyebrow">02 / NOSSA ESSÊNCIA</p>
+      <p className="eyebrow">NOSSA ESSÊNCIA</p>
       <h2>
         Mais que estética.
         <br />
