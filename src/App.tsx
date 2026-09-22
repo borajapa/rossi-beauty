@@ -111,7 +111,7 @@ const Hero = () => (
   <section id="home" className="hero-section">
     <div className="hero-copy">
       <p className="eyebrow">
-        <span /> ESTÉTICA AVANÇADA · BRASÍLIA
+        <span /> ESTÉTICA FACIAL · BRASÍLIA
       </p>
       <h1>
         Naturalmente
