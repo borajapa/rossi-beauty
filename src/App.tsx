@@ -142,7 +142,12 @@ const Hero = () => (
     <div className="hero-visual">
       <img
         className="hero-photo"
-        src="/index/recepcao.jpg"
+        src="/index/recepcao-1440.webp"
+        srcSet="/index/recepcao-640.webp 640w, /index/recepcao-960.webp 960w, /index/recepcao-1440.webp 1440w"
+        sizes="(max-width: 767px) 88vw, (max-width: 1440px) 43vw, 620px"
+        width={1976}
+        height={2469}
+        loading="eager"
         alt="Recepção da clínica Rossi Soares, com poltronas e iluminação acolhedora"
         fetchPriority="high"
       />
