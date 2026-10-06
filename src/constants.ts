@@ -216,6 +216,22 @@ export const SERVICES: Service[] = [
     category: 'Estética Facial',
   },
   {
+    id: 'glass-skin',
+    title: 'Glass Skin - Peeling Químico',
+    shortDescription: 'Peeling químico para uma pele mais uniforme, radiante e rejuvenescida.',
+    fullDescription:
+      'Peeling químico descamativo de alta performance para melhora de textura, clareamento de manchas, uniformização do tom de pele e rejuvenescimento. Um protocolo completo que une ativos clareadores e antioxidantes para uma pele visivelmente mais clara, radiante e rejuvenescida.',
+    image: '/servicos/Estetica facial/glass-skin.jpg',
+    benefits: [
+      'Melhora da textura da pele',
+      'Clareamento de manchas',
+      'Uniformização do tom de pele',
+      'Rejuvenescimento e luminosidade',
+    ],
+    duration: '45 min',
+    category: 'Estética Facial',
+  },
+  {
     id: 'dermaplaning',
     title: 'Dermaplaning',
     shortDescription: 'Peeling físico para remover camadas de células mortas.',
