@@ -1,0 +1,21 @@
+src/App.tsx
+  s_9bced12b0aa8cd::t_9bb227d466c568 145-150
+index.html
+  s_9bced12b0aa8cd::t_9bb227d466c568 6-14
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.3",
+  "base_commit_sha": "3e953ff5545cbab71546f3e9e13ef048c757df6f",
+  "prompts": {},
+  "sessions": {
+    "s_9bced12b0aa8cd": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a10eda-3685-7910-8cb2-5da9515eb6ee",
+        "model": "gpt-6.1-sol"
+      },
+      "human_author": "C1327572 Joao Henrique Koshino Ferreira <C1327572@interno.bb.com.br>"
+    }
+  }
+}
